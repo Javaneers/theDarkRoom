@@ -11,6 +11,7 @@ public class Screens {
   private Collection<String> menuOptions;
 
   public Screens(String header, String paragraph, Collection<String> menuOptions) {
+    this.setHeaderText(header);
 
   }
 
@@ -20,7 +21,7 @@ public class Screens {
     drawMenu ();
   }
 
-  private void drawHeader () {
+  public void drawHeader () {
     Collection<String> headerRows = buildHeader(getHeaderText());
       for (String row :headerRows) {
         System.out.println(row);
@@ -39,19 +40,24 @@ public class Screens {
 	//two dimensional array for characters?
     Collection<String> result = new ArrayList<>();
     String[] letters = headerText.split("");
-    StringBuilder currentRow = new StringBuilder();
-    //Add a spaceBlock at the beginning of the header
-    currentRow.append("--------");
-    for (String letter : letters){
-      //Focus on one row, build a string for each row, then print it to console
-      //Building row string
-      for (int i=0; i<10; i++){
-        //concatenate currentLetter[i] to currentRow;
+    for (int i=0; i<10; i++) {
+      StringBuilder currentRow = new StringBuilder();
+      //Add a spaceBlock at the beginning of the header
+      currentRow.append("--------");
+      for (String letter : letters) {
+        //for each letter in the letters array, I want to find the row i in the enum and append it
+        currentRow.append(letter[i]);
+        //Focus on one row, build a string for each row, then print it to console
+        //Building row string
+       // for (int j = 0; j < 10; j++) {
+          //concatenate currentLetter[i] to currentRow;
+       // }
+
       }
-    //Add a spaceBlock at the end of the header
-    currentRow.append("--------");
-    //Add currentRow to results ArrayList
-    result.add(currentRow.toString());
+      //Add a spaceBlock at the end of the header
+      currentRow.append("--------");
+      //Add currentRow to results ArrayList
+      result.add(currentRow.toString());
     }
 
     return result;
@@ -65,16 +71,16 @@ public class Screens {
   private String getParagraph(){ return this.paragraph; }
   private Collection<String> getMenuOptions(){ return this.menuOptions;}
 
-  private void setHeaderText(String header) {
+  private void setHeaderText(String headerText) {
     String result;
     //limit header text to <=10 characters
-    if (header.length() >= 10){
-      result = header.substring(0,10);
+    if (headerText.length() >= 10){
+      result = headerText.substring(0,10);
     }
     else {
-      result = header;
+      result = headerText;
     }
-    this.headerText = result;
+    this.headerText = result.toLowerCase();
   }
   private void setParagraph(){}
   private void setMenuOptions(){}
