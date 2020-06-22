@@ -4,6 +4,7 @@ package com.javaneers.game;
 
 public class PlayerSprite {
 
+  
   private int moveCount = 5; //hardcoded here for now
 
 
@@ -38,6 +39,8 @@ public class PlayerSprite {
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
   @Override
   public String toString() { return getClass().getSimpleName() + "Moves left:" + getMoveCount();}
+
+
 
   }
 
