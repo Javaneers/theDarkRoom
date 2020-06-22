@@ -21,9 +21,11 @@ public class Screens {
   }
 
   private void drawHeader () {
-    for (String row : getHeader()){
-      System.out.println(row);
-    }
+    Collection<String> headerRows = buildHeader(getHeaderText());
+      for (String row :headerRows) {
+        System.out.println(row);
+      }
+
   }
   private void drawParagraph (){
     System.out.println(getParagraph());
@@ -33,19 +35,23 @@ public class Screens {
   }
 
   Collection<String> buildHeader(String headerText){
-	//builder header always print a begin spaceBlock, will print up to 10 characters from string input, then stops (use a subList), then always prints a trailing spaceBlock
+	//builder header always print a begin spaceBlock, will print up to 10 characters from string input, then stops (use a substring), then always prints a trailing spaceBlock
 	//two dimensional array for characters?
     Collection<String> result = new ArrayList<>();
     String[] letters = headerText.split("");
-    StringBuilder
+    StringBuilder currentRow = new StringBuilder();
+    //Add a spaceBlock at the beginning of the header
+    currentRow.append("--------");
     for (String letter : letters){
       //Focus on one row, build a string for each row, then print it to console
       //Building row string
       for (int i=0; i<10; i++){
         //concatenate currentLetter[i] to currentRow;
       }
-      //Print currentRow to console
-      result.add(currentRow);
+    //Add a spaceBlock at the end of the header
+    currentRow.append("--------");
+    //Add currentRow to results ArrayList
+    result.add(currentRow.toString());
     }
 
     return result;
