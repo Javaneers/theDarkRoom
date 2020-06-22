@@ -6,7 +6,7 @@ public class GameBoardClient {
 
   public static void main(String[] args) {
     GameBoard testBoard = new GameBoard();
-    testBoard.toString();
+    System.out.println(testBoard.toString());
   }
 
 }
