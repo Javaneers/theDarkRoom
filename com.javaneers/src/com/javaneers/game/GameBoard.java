@@ -8,9 +8,9 @@ public class GameBoard {
   int boon      = 3;
 
   // Board Properties (and their default values)
-  int height = 5;
-  int width = 5;
-  int[][] darkRoom = new int[height][width];
+  public static int boardHeight = 5;
+  public static int boardWidth = 5;
+  int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
   int doorPosition = darkRoom[4][3];
@@ -92,6 +92,9 @@ public class GameBoard {
     this.boonCount = boonCount;
   }
   public int getBoonCount() { return boonCount; }
+
+  public static int getBoardHeight() { return boardHeight; }
+  public static int getBoardWidth() { return boardWidth; }
 
 
   @Override
