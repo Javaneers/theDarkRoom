@@ -28,6 +28,7 @@ public class GameBoard {
   // public GameBoard createBoard() { }
 
   // BUSINESS METHODS
+  /*
   public Door createDoor() {
 
   }
@@ -51,6 +52,8 @@ public class GameBoard {
 
   // ACCESSORS
 
+
+   */
 
   @Override
   public String toString() {
