@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ScreensTest {
   public static void main(String[] args) {
-    Screens screen1 = new Screens("Header","Par",new ArrayList<String>());
+    Screens screen1 = new Screens("it works","Par",new ArrayList<String>());
     screen1.drawHeader();
   }
 }

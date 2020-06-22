@@ -43,10 +43,10 @@ public class Screens {
     for (int i=0; i<10; i++) {
       StringBuilder currentRow = new StringBuilder();
       //Add a spaceBlock at the beginning of the header
-      currentRow.append("--------");
+      currentRow.append(AlphaHeader.MAP.get(" ")[i]);
       for (String letter : letters) {
         //for each letter in the letters array, I want to find the row i in the enum and append it
-        currentRow.append(letter[i]);
+        currentRow.append(AlphaHeader.MAP.get(letter)[i]);
         //Focus on one row, build a string for each row, then print it to console
         //Building row string
        // for (int j = 0; j < 10; j++) {
@@ -55,7 +55,7 @@ public class Screens {
 
       }
       //Add a spaceBlock at the end of the header
-      currentRow.append("--------");
+      currentRow.append(AlphaHeader.MAP.get(" ")[i]);
       //Add currentRow to results ArrayList
       result.add(currentRow.toString());
     }

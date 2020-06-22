@@ -358,7 +358,7 @@ public static final Map<String,String[]> MAP = new HashMap<>() {
       "||||||||"
     });
 
-    put("spaceBlock", new String[]{
+    put(" ", new String[]{
       "||||||||",
       "........",
       "........",
