@@ -26,40 +26,32 @@ public class Screens {
       for (String row :headerRows) {
         System.out.println(row);
       }
-
   }
+
   private void drawParagraph (){
     System.out.println(getParagraph());
   }
+
   private void drawMenu () {
     System.out.println(getMenuOptions());
   }
 
   Collection<String> buildHeader(String headerText){
-	//builder header always print a begin spaceBlock, will print up to 10 characters from string input, then stops (use a substring), then always prints a trailing spaceBlock
-	//two dimensional array for characters?
+	// References a map of alphabetical characters and builds/prints a pixel-style header row by row
     Collection<String> result = new ArrayList<>();
     String[] letters = headerText.split("");
     for (int i=0; i<10; i++) {
       StringBuilder currentRow = new StringBuilder();
-      //Add a spaceBlock at the beginning of the header
+      //Add a "whitespace" block at the beginning of the header
       currentRow.append(AlphaHeader.MAP.get(" ")[i]);
       for (String letter : letters) {
-        //for each letter in the letters array, I want to find the row i in the enum and append it
         currentRow.append(AlphaHeader.MAP.get(letter)[i]);
-        //Focus on one row, build a string for each row, then print it to console
-        //Building row string
-       // for (int j = 0; j < 10; j++) {
-          //concatenate currentLetter[i] to currentRow;
-       // }
-
       }
-      //Add a spaceBlock at the end of the header
+      //Add a "whitespace" block at the end of the header
       currentRow.append(AlphaHeader.MAP.get(" ")[i]);
       //Add currentRow to results ArrayList
       result.add(currentRow.toString());
     }
-
     return result;
   }
 
