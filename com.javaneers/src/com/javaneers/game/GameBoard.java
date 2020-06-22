@@ -54,14 +54,16 @@ public class GameBoard {
 
   @Override
   public String toString() {
-    var result = "ERROR";
-
-//    return "theDarkRoom currently looks like this: \n" +
+    var result = new StringBuilder();
     for (int h[] : darkRoom) {
       for (int w : h) {
-        System.out.println(w);
+//        System.out.print(w);
+        result.append(w);
       }
+//      System.out.println(" ");
+      result.append("\n");
     }
+    return "theDarkRoom currently looks like this: \n" + result;
   }
 
 }
