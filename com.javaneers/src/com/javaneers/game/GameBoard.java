@@ -25,14 +25,16 @@ public class GameBoard {
   }
 
   // TODO: address the creation of gameBoards via external method calls (createBoard should just be "new" GameBoard? or instanceOF? ..?
-  public GameBoard createBoard() { }
+  // public GameBoard createBoard() { }
 
+  // BUSINESS METHODS
   public Door createDoor() {
 
   }
 
-  public Player spawnPlayer() {
-
+  public spawnPlayer() {
+    PlayerSprite playerPiece = new PlayerSprite();
+    setPlayerPosition();
   }
 
   public Boon spawnBoon() {
@@ -47,6 +49,19 @@ public class GameBoard {
 
   }
 
+  // ACCESSORS
 
+
+  @Override
+  public String toString() {
+    var result = "ERROR";
+
+//    return "theDarkRoom currently looks like this: \n" +
+    for (int h[] : darkRoom) {
+      for (int w : h) {
+        System.out.println(w);
+      }
+    }
+  }
 
 }
