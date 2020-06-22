@@ -6,7 +6,15 @@ public class GameBoardClient {
 
   public static void main(String[] args) {
     GameBoard testBoard = new GameBoard();
-    testBoard.toString();
+    System.out.println(testBoard.toString());
+
+    System.out.println("doorPosition --> " + testBoard.getDoorPosition());
+    System.out.println("playerPosition --> " + testBoard.getPlayerPosition());
+    System.out.println("currentBoonCount --> " + testBoard.getBoonCount());
+    testBoard.decrementBoonCount();
+    System.out.println("boonCount after decrement = " + testBoard.getBoonCount());
+
+    System.out.println(testBoard.toString());
   }
 
 }

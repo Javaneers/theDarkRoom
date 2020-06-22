@@ -4,7 +4,12 @@ package com.javaneers.game;
 
 public class PlayerSprite { //?extends GameBoard {
 
+<<<<<<< HEAD
+  
+  private int moveCount = 5; //hardcoded here for now
+=======
   int moveCount = 5; //hardcoded here for now
+>>>>>>> a9fcbebc783a0bac92a83d9a6401ade216976644
 
 
   public void movePayer() throws IllegalArgumentException {
@@ -38,6 +43,8 @@ public class PlayerSprite { //?extends GameBoard {
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
   @Override
   public String toString() { return getClass().getSimpleName() + "Moves left:" + getMoveCount();}
+
+
 
   }
 
