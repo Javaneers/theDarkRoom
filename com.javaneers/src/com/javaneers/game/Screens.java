@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 //Possibly interface for display screens
-  public class Screens {
-  private String header;
+public class Screens {
+  private String headerText;
+  private Collection<String> header;
   private String paragraph;
   private Collection<String> menuOptions;
 
@@ -20,7 +21,9 @@ import java.util.Collection;
   }
 
   private void drawHeader () {
-    System.out.println(getHeader());
+    for (String row : getHeader()){
+      System.out.println(row);
+    }
   }
   private void drawParagraph (){
     System.out.println(getParagraph());
@@ -29,20 +32,46 @@ import java.util.Collection;
     System.out.println(getMenuOptions());
   }
 
-  ArrayList<String> buildHeader(String title){
+  Collection<String> buildHeader(String headerText){
 	//builder header always print a begin spaceBlock, will print up to 10 characters from string input, then stops (use a subList), then always prints a trailing spaceBlock
 	//two dimensional array for characters?
-    return new ArrayList<>();
+    Collection<String> result = new ArrayList<>();
+    String[] letters = headerText.split("");
+    StringBuilder
+    for (String letter : letters){
+      //Focus on one row, build a string for each row, then print it to console
+      //Building row string
+      for (int i=0; i<10; i++){
+        //concatenate currentLetter[i] to currentRow;
+      }
+      //Print currentRow to console
+      result.add(currentRow);
+    }
+
+    return result;
   }
 
+
+
   // Getters Setters
-  String getHeader(){ return this.header; }
-  String getParagraph(){ return this.paragraph; }
-  Collection getMenuOptions(){ return this.menuOptions;}
-  void setHeader() { }
-  void setParagraph(){}
-  void setMenuOptions(){}
-}
+  private String getHeaderText(){ return this.headerText; }
+  private Collection<String> getHeader() { return this.header; }
+  private String getParagraph(){ return this.paragraph; }
+  private Collection<String> getMenuOptions(){ return this.menuOptions;}
+
+  private void setHeaderText(String header) {
+    String result;
+    //limit header text to <=10 characters
+    if (header.length() >= 10){
+      result = header.substring(0,10);
+    }
+    else {
+      result = header;
+    }
+    this.headerText = result;
+  }
+  private void setParagraph(){}
+  private void setMenuOptions(){}
 
 
 }
