@@ -10,7 +10,11 @@ public class GameBoardClient {
 
     System.out.println("doorPosition --> " + testBoard.getDoorPosition());
     System.out.println("playerPosition --> " + testBoard.getPlayerPosition());
+    System.out.println("currentBoonCount --> " + testBoard.getBoonCount());
+    testBoard.decrementBoonCount();
+    System.out.println("boonCount after decrement = " + testBoard.getBoonCount());
 
+    System.out.println(testBoard.toString());
   }
 
 }

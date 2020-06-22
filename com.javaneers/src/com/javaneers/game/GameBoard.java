@@ -2,21 +2,24 @@ package com.javaneers.game;
 
 public class GameBoard {
   // GamePieces
-  int door = 1;
-  int player = 2;
-  int boon = 3;
-  int boonCount = 3;
+  int freeSpace = 0;
+  int door      = 1;
+  int player    = 2;
+  int boon      = 3;
 
   // Board Properties (and their default values)
   int height = 5;
   int width = 5;
   int[][] darkRoom = new int[height][width];
 
-  // GamePiece POSITIONS
+  // default GamePiece POSITIONS
   int doorPosition = darkRoom[4][3];
   int playerPosition = darkRoom[3][3];
   int boon1Position = darkRoom[0][0];
   int boon2Position =  darkRoom[1][4];
+
+  // GamePiece Status
+  int boonCount = 3;
 
   // TODO: potentially make these classes
   // Door door = new Door();
@@ -33,39 +36,62 @@ public class GameBoard {
 
   // BUSINESS METHODS
   public void setupRoom() {
-    setDoorPosition();
-    setPlayerPosition();
-    setBoons();
+    setDoorPosition(4, 3);
+    setPlayerPosition(3, 3);
+    setBoonCount(3);
+//    setBoonPosition();
     System.out.println("TheDarkRoom is ready...");
   }
-  /*
-  public Door createDoor() {
 
-  }
+  /* TODO: implement these methods or a stand-in equivalent for the GamePlay class
+  public Door createDoor() { }
 
   public spawnPlayer() {
     PlayerSprite playerPiece = new PlayerSprite();
     setPlayerPosition();
   }
 
-  public Boon spawnBoon() {
+  public Boon spawnBoon() { }
 
-  }
+  public collisionTest() { }
 
-  public collisionTest() {
-
-  }
-
-  public void updatePlayerPosition() {
-
-  }
+  public void updatePlayerPosition() { }
 
    */
 
+  public void decrementBoonCount() {
+    this.boonCount--;
+  }
+
+
   // ACCESSORS
   public void setDoorPosition(int a, int b) {
-    doorPosition = ;
+    doorPosition =
+    darkRoom[a][b] = 1;
   }
+  public int getDoorPosition() { return doorPosition; }
+
+  public void setPlayerPosition(int a, int b) {
+    playerPosition = darkRoom[a][b];
+    darkRoom[a][b] = 2;
+  }
+  public int getPlayerPosition() { return playerPosition; }
+
+  /*
+  TODO: make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
+  public void setBoonPosition(int a, int b) {
+    boonPosition = darkRoom[a][b];
+    darkRoom[a][b] = 3;
+  }
+  public int getBoonPosition() {
+    return boonPosition;
+  }
+   */
+
+  public void setBoonCount(int boonCount) {
+    this.boonCount = boonCount;
+  }
+  public int getBoonCount() { return boonCount; }
 
 
   @Override
