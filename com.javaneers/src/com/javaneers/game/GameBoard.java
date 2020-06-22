@@ -1,17 +1,24 @@
 package com.javaneers.game;
 
 public class GameBoard {
+  // GamePieces
+  int door = 1;
+  int player = 2;
+  int boon = 3;
+  int boonCount = 3;
 
-  // Properties (and their default values)
+  // Board Properties (and their default values)
   int height = 5;
   int width = 5;
   int[][] darkRoom = new int[height][width];
+
+  // GamePiece POSITIONS
   int doorPosition = darkRoom[4][3];
   int playerPosition = darkRoom[3][3];
   int boon1Position = darkRoom[0][0];
   int boon2Position =  darkRoom[1][4];
 
-
+  // TODO: potentially make these classes
   // Door door = new Door();
   // Player player = new Player();
   // Boon boon = new Boon();
@@ -24,10 +31,13 @@ public class GameBoard {
     this.darkRoom = new int [height][width];
   }
 
-  // TODO: address the creation of gameBoards via external method calls (createBoard should just be "new" GameBoard? or instanceOF? ..?
-  // public GameBoard createBoard() { }
-
   // BUSINESS METHODS
+  public void setupRoom() {
+    setDoorPosition();
+    setPlayerPosition();
+    setBoons();
+    System.out.println("TheDarkRoom is ready...");
+  }
   /*
   public Door createDoor() {
 
@@ -50,10 +60,13 @@ public class GameBoard {
 
   }
 
-  // ACCESSORS
-
-
    */
+
+  // ACCESSORS
+  public void setDoorPosition(int a, int b) {
+    doorPosition = ;
+  }
+
 
   @Override
   public String toString() {
@@ -61,7 +74,7 @@ public class GameBoard {
     for (int h[] : darkRoom) {
       for (int w : h) {
 //        System.out.print(w);
-        result.append(w);
+        result.append(w + " ");
       }
 //      System.out.println(" ");
       result.append("\n");
