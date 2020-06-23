@@ -12,10 +12,11 @@ public class GamePlay {
 
     Screens titleScreen = new Screens("Dark Room","",new ArrayList<String>(List.of("Rules","Start")));
     titleScreen.drawHeader();
+    titleScreen.drawMenu();
     GameBoard board1 = new GameBoard(5,5);
     //GameBoard might initialize player eventually, doing that manually in the client for now
     PlayerSprite player1 = new PlayerSprite();
-    player1.movePayer();
+    //player1.movePlayer();
     Screens winScreen = new Screens("You Win","",new ArrayList<String>(List.of("Play Again")));
     winScreen.drawHeader();
 
