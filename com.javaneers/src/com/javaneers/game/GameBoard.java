@@ -123,11 +123,14 @@ public class GameBoard {
 
   public void setPlayerPosition(int row, int col) {
     darkRoom[row][col] = 2;
+    darkRoom[getPlayerPosition("row")][getPlayerPosition("col")] = 0;
     playerPosition.put("row", row);
     playerPosition.put("col", col);
   }
-  public int getPlayerPosition() {
-    int result = playerPosition.get("row") + playerPosition.get("col");
+  public StringBuilder getPlayerPosition() {
+    StringBuilder result = new StringBuilder();
+    result.append("\n  row: ").append(playerPosition.get("row"));
+    result.append("\n  col: ").append(playerPosition.get("col"));
     return result;
   }
   public int getPlayerPosition(String rowOrCol) {

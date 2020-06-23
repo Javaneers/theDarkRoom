@@ -15,7 +15,7 @@ public class GamePlay {
     GameBoard board1 = new GameBoard(5,5);
     //GameBoard might initialize player eventually, doing that manually in the client for now
     PlayerSprite player1 = new PlayerSprite();
-    player1.movePayer();
+//    player1.movePayer();
     Screens winScreen = new Screens("You Win","",new ArrayList<String>(List.of("Play Again")));
     winScreen.drawHeader();
 

@@ -26,7 +26,22 @@ public class GameBoardClient {
 //    testBoard.updateBoard("player", 3,4);
 //    System.out.println("After player moved to row3, col4: " + testBoard.toString());
 
-    
+    testBoard.setupBoard();
+    System.out.println("testBoard after setup: \n" + testBoard.toString());
+
+    System.out.println("getPlayerPosition: " +
+      testBoard.getPlayerPosition());
+    System.out.println("getPlayerPosition('row') --> " +
+      testBoard.getPlayerPosition("row"));
+    System.out.println("getPlayerPosition('col') --> " +
+      testBoard.getPlayerPosition("col"));
+
+    testBoard.updateBoard("player", 1, 2);
+    System.out.println("after moving player to row1, col2: " + testBoard.toString());
+
+    testBoard.updateBoard("player", 1, 3);
+    System.out.println("after moving player to row1, col3: " + testBoard.toString());
+
   }
 
 }
