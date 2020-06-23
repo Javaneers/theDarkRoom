@@ -8,6 +8,8 @@ public class GameBoardClient {
     GameBoard testBoard = new GameBoard();
     System.out.println(testBoard.toString());
 
+    testBoard.setupBoard();
+
     System.out.println("doorPosition --> " + testBoard.getDoorPosition());
     System.out.println("playerPosition --> " + testBoard.getPlayerPosition());
     System.out.println("currentBoonCount --> " + testBoard.getBoonCount());
