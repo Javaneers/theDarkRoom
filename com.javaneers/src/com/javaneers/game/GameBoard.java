@@ -24,6 +24,11 @@ public class GameBoard {
       put("col", 3);
     }
   };
+//  public Map<String, Integer> boons = new HashMap<>() {
+//    {
+//      put("boon1", )
+//    }
+//  };
 
   int boon1Position = darkRoom[0][0];
   int boon2Position =  darkRoom[1][4];
@@ -51,6 +56,27 @@ public class GameBoard {
     setBoonCount(3);
 //    setBoonPosition();
     System.out.println("TheDarkRoom is ready...");
+  }
+
+  public void updateBoard(String gamePiece, int row, int col) {
+    try {
+      if ("player".equals(gamePiece)) {
+        setPlayerPosition(row, col);
+      }
+      else if ("door".equals(gamePiece)) {
+        setDoorPosition(row, col);
+      }
+      else if ("boon".equals(gamePiece)) {
+//        setBoonPosition();
+//        totalBoonCheck();
+      }
+    } catch () {
+      System.out.println("Invalid updateBoard parameters, " +
+        "please ensure gamePiece argument is: 'player', 'door', or 'boon'");
+    }
+    finally {
+      System.out.println("Updating " + gamePiece + " position...");
+    }
   }
 
   /* TODO: implement these methods or a stand-in equivalent for the GamePlay class
@@ -81,11 +107,14 @@ public class GameBoard {
   }
   public int getDoorPosition() { return doorPosition; }
 
-//  public void setPlayerPosition(int a, int b) {
+  public void setPlayerPosition(int a, int b) {
 //    playerPosition = darkRoom[a][b];
-//    darkRoom[a][b] = 2;
-//  }
-//  public int getPlayerPosition() { return playerPosition; }
+    darkRoom[a][b] = 2;
+  }
+  public int getPlayerPosition() {
+    int result = playerPosition.get("row") + playerPosition.get("col");
+    return result;
+  }
 
   /*
   TODO: make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
