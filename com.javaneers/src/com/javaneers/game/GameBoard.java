@@ -39,7 +39,7 @@ public class GameBoard {
   // BUSINESS METHODS
   public void setupBoard() {
     setDoorPosition(4, 3);    // if roomSize is custom this has to be checked (needs to be against a wall)
-    setPlayerPosition(2, 2);
+   // setPlayerPosition(2, 2);
     setBoonCount(3);
 //    setBoonPosition();
     System.out.println("TheDarkRoom is ready...");
