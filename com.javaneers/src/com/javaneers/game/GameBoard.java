@@ -53,12 +53,20 @@ public class GameBoard {
   }
 
 
+
+//    int random = x-((int)Math.round((Math.random())*(x-y)));
+
+  // TODO: make a random class to perform this
+  public int randomInt(int min, int max) {
+    return max - ((int)Math.round((Math.random())*(max-min)));
+  }
+
+  int randomRow = boardHeight - (int)Math.round(Math.random() * boardHeight);
+
   // BUSINESS METHODS
   public void setupBoard() {
-    setDoorPosition(4, 3);    // if roomSize is custom this has to be checked (needs to be against a wall)
-   // setPlayerPosition(2, 2);
-    setBoonCount(3);
-//    setBoonPosition();
+    updateBoard("player", randomInt(0, boardHeight - 1), randomInt(0, boardWidth - 1));
+    updateBoard("door", randomInt(0, 1), randomInt(0, 1));
     System.out.println("TheDarkRoom is ready...");
   }
 
