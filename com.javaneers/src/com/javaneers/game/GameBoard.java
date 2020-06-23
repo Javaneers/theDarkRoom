@@ -29,6 +29,7 @@ public class GameBoard {
       put("col", 4);
     }
   };
+  // TODO: implement boons (either via Class or collection)
 //  public Map<String, Integer> boons = new HashMap<>() {
 //    {
 //      put("boon1", )
@@ -53,10 +54,7 @@ public class GameBoard {
   }
 
 
-
-//    int random = x-((int)Math.round((Math.random())*(x-y)));
-
-  // TODO: make a random Class to perform this
+  // TODO: make a Class to perform this (potentially named RandomInt)
   public int randomInt(int min, int max) {
     return max - ((int)Math.round((Math.random())*(max-min)));
   }
@@ -91,23 +89,6 @@ public class GameBoard {
     }
   }
 
-
-  /* TODO: implement these methods or a stand-in equivalent for the GamePlay class
-  public Door createDoor() { }
-
-  public spawnPlayer() {
-    PlayerSprite playerPiece = new PlayerSprite();
-    setPlayerPosition();
-  }
-
-  public Boon spawnBoon() { }
-
-  public collisionTest() { }
-
-  public void updatePlayerPosition() { }
-
-   */
-
   public void decrementBoonCount() {
     this.boonCount--;
   }
@@ -115,15 +96,12 @@ public class GameBoard {
 
   // ACCESSORS
   public void setDoorPosition(int row, int col) {
-    darkRoom[row][col] = 1;
     doorPosition.put("row", row);
     doorPosition.put("col", col);
   }
   public Map<String, Integer> getDoorPosition() { return doorPosition; }
 
   public void setPlayerPosition(int row, int col) {
-    darkRoom[row][col] = 2;
-    darkRoom[getPlayerPosition("row")][getPlayerPosition("col")] = 0;
     playerPosition.put("row", row);
     playerPosition.put("col", col);
   }
@@ -169,9 +147,10 @@ public class GameBoard {
   public static int getBoardHeight() { return boardHeight; }
   public static int getBoardWidth() { return boardWidth; }
 
-
+  // TODO: [STRETCH GOAL] implement a method which paints the board (aka darkRoom), taking args of playPosition, doorPosition, and boonPosition
   @Override
   public String toString() {
+    /*
     var result = new StringBuilder();
     for (int h[] : darkRoom) {
       for (int w : h) {
@@ -183,6 +162,14 @@ public class GameBoard {
     }
     System.out.println(Arrays.deepToString(darkRoom));
     return "theDarkRoom currently looks like this: \n" + result;
+    */
+    return "Current DarkRoom stats: " +
+      ": \n  playerPosition=" + getPlayerPosition() +
+      ", \n  doorPosition=" + getDoorPosition() +
+//      ", \n  boonsLeftToFind=" + getBoonCount() +
+//      ", \n  playerCollectedBoons=" + getCollectedBoons() +
+//      ", \n  boonPositions=" + getBoonPositions()
+      "";
   }
 
 }
