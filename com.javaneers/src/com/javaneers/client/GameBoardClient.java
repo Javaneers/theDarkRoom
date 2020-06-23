@@ -21,6 +21,9 @@ public class GameBoardClient {
 
     System.out.println("playerPositionROW: " + testBoard.playerPosition.get("row"));
     System.out.println("playerPositionCOL: " + testBoard.playerPosition.get("col"));
+
+    testBoard.updateBoard("player", 3,4);
+    System.out.println("After player moved to row3, col4: " + testBoard.toString());
   }
 
 }

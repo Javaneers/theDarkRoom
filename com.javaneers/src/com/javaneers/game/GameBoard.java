@@ -17,7 +17,12 @@ public class GameBoard {
   int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
-  int doorPosition = darkRoom[4][3];
+    public Map<String, Integer> doorPosition = new HashMap<>() {
+    {
+      put("row", 3);
+      put("col", 3);
+    }
+  };
   public Map<String, Integer> playerPosition = new HashMap<>() {
     {
       put("row", 3);
@@ -30,11 +35,9 @@ public class GameBoard {
 //    }
 //  };
 
-  int boon1Position = darkRoom[0][0];
-  int boon2Position =  darkRoom[1][4];
-
   // GamePiece Status
   int boonCount = 3;
+  boolean doorAttemptable = true;
 
   // TODO: potentially make these classes
   // Door door = new Door();
@@ -49,6 +52,7 @@ public class GameBoard {
     this.darkRoom = new int [height][width];
   }
 
+
   // BUSINESS METHODS
   public void setupBoard() {
     setDoorPosition(4, 3);    // if roomSize is custom this has to be checked (needs to be against a wall)
@@ -57,6 +61,7 @@ public class GameBoard {
 //    setBoonPosition();
     System.out.println("TheDarkRoom is ready...");
   }
+
 
   public void updateBoard(String gamePiece, int row, int col) {
     try {
@@ -70,7 +75,7 @@ public class GameBoard {
 //        setBoonPosition();
 //        totalBoonCheck();
       }
-    } catch () {
+    } catch (Exception e) {
       System.out.println("Invalid updateBoard parameters, " +
         "please ensure gamePiece argument is: 'player', 'door', or 'boon'");
     }
@@ -78,6 +83,7 @@ public class GameBoard {
       System.out.println("Updating " + gamePiece + " position...");
     }
   }
+
 
   /* TODO: implement these methods or a stand-in equivalent for the GamePlay class
   public Door createDoor() { }
@@ -102,14 +108,16 @@ public class GameBoard {
 
   // ACCESSORS
   public void setDoorPosition(int a, int b) {
-//    doorPosition =
     darkRoom[a][b] = 1;
+    doorPosition.put("row", a);
+    doorPosition.put("col", b);
   }
-  public int getDoorPosition() { return doorPosition; }
+  public Map<String, Integer> getDoorPosition() { return doorPosition; }
 
   public void setPlayerPosition(int a, int b) {
-//    playerPosition = darkRoom[a][b];
     darkRoom[a][b] = 2;
+    playerPosition.put("row", a);
+    playerPosition.put("col", b);
   }
   public int getPlayerPosition() {
     int result = playerPosition.get("row") + playerPosition.get("col");
@@ -117,7 +125,7 @@ public class GameBoard {
   }
 
   /*
-  TODO: make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
+  TODO: [STRETCH] make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
   public void setBoonPosition(int a, int b) {
     boonPosition = darkRoom[a][b];
     darkRoom[a][b] = 3;
