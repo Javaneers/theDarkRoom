@@ -1,6 +1,8 @@
 package com.javaneers.game;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameBoard {
   // GamePieces
@@ -16,7 +18,13 @@ public class GameBoard {
 
   // default GamePiece POSITIONS
   int doorPosition = darkRoom[4][3];
-  int playerPosition = darkRoom[3][3];
+  public Map<String, Integer> playerPosition = new HashMap<>() {
+    {
+      put("row", 3);
+      put("col", 3);
+    }
+  };
+
   int boon1Position = darkRoom[0][0];
   int boon2Position =  darkRoom[1][4];
 
@@ -73,11 +81,11 @@ public class GameBoard {
   }
   public int getDoorPosition() { return doorPosition; }
 
-  public void setPlayerPosition(int a, int b) {
-    playerPosition = darkRoom[a][b];
-    darkRoom[a][b] = 2;
-  }
-  public int getPlayerPosition() { return playerPosition; }
+//  public void setPlayerPosition(int a, int b) {
+//    playerPosition = darkRoom[a][b];
+//    darkRoom[a][b] = 2;
+//  }
+//  public int getPlayerPosition() { return playerPosition; }
 
   /*
   TODO: make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
