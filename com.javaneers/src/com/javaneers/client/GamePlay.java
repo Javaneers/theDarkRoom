@@ -10,7 +10,7 @@ public class GamePlay {
 
   public static void main(String[] args) {
 
-    Screens titleScreen = new Screens("Dark Room","",new ArrayList<String>(List.of("Rules","Start")));
+    Screens titleScreen = new Screens("Dark Room","",new ArrayList<String>(List.of("Rules","Start","exit")));
     titleScreen.drawHeader();
     titleScreen.drawMenu();
     GameBoard board1 = new GameBoard(5,5);

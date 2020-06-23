@@ -2,15 +2,16 @@ package com.javaneers.game;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 //Possibly interface for display screens
 public class Screens {
   private String headerText;
   private Collection<String> header;
   private String paragraph;
-  private Collection<String> menuOptions;
+  private List<String> menuOptions;
 
-  public Screens(String header, String paragraph, Collection<String> menuOptions) {
+  public Screens(String header, String paragraph, List<String> menuOptions) {
     this.setHeaderText(header);
     this.setMenuOptions(menuOptions);
 
@@ -26,7 +27,8 @@ public class Screens {
     Collection<String> headerRows = buildHeader(getHeaderText());
       for (String row :headerRows) {
         System.out.println(row);
-      }
+    }
+    System.out.println("\n\n");
   }
 
   private void drawParagraph (){
@@ -35,6 +37,7 @@ public class Screens {
 
   public void drawMenu () {
     System.out.println(buildMenu(getMenuOptions()));
+    System.out.println("\n");
   }
 
   Collection<String> buildHeader(String headerText){
@@ -56,10 +59,17 @@ public class Screens {
     return result;
   }
 
-  String buildMenu(Collection<String> menuOptions){
+  String buildMenu(List<String> menuOptions){
     StringBuilder menu = new StringBuilder();
-    for (String option : menuOptions) {
-      menu.append(" " + option + " ");
+    for (int i=0; i<menuOptions.size();i++) {
+      int expectedInput;
+      if ( ! menuOptions.get(i).equals("exit")) {
+        expectedInput = i + 1;
+      }
+      else {
+        expectedInput = 0;
+      }
+      menu.append(" " + menuOptions.get(i) + ": " + expectedInput + " ");
     }
     //Math used for centering Menu Items below Header
     int whitespaces = Math.round(((((headerText.length() + 2) * 8) - menu.length()) / 2));
@@ -75,7 +85,7 @@ public class Screens {
   public String getHeaderText(){ return this.headerText; }
   private Collection<String> getHeader() { return this.header; }
   public String getParagraph(){ return this.paragraph; }
-  public Collection<String> getMenuOptions(){ return this.menuOptions;}
+  public List<String> getMenuOptions(){ return this.menuOptions;}
 
   private void setHeaderText(String headerText) {
     String result;
@@ -89,7 +99,7 @@ public class Screens {
     this.headerText = result.toLowerCase();
   }
   private void setParagraph(){}
-  private void setMenuOptions(Collection<String> options){ this.menuOptions = options;}
+  private void setMenuOptions(List<String> options){ this.menuOptions = options;}
 
 
 }
