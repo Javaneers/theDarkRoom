@@ -10,14 +10,16 @@ public class PlayerSprite {
   private int moveCount = 5; //hardcoded here for now
   GameBoard board = new GameBoard();
 
+
   //Business Methods
   public void movePayer() throws IllegalArgumentException {
-    int currentRow = 3; //board.getPlayerPosition("row");
-    int currentCol = 4; //board.getPlayerPosition("col");
-    int input = ReadPlayerInput.getInput();
+    int currentRow = board.getPlayerPosition();
+    int currentCol = board.getPlayerPosition();
+    int input;
     int i = getMoveCount();
 
     while (i > 0) {
+      input = ReadPlayerInput.getInput();
       if (input == 2 && currentCol != board.getBoardWidth()) {
         currentCol += 1;
         System.out.println("You took one step right.");
@@ -36,14 +38,14 @@ public class PlayerSprite {
       }
       i -= 1;
       setMoveCount(i);
-      board.setPlayerPosition(...); //
+      //board.setPlayerPosition(...); //
 
-      if (board.getPlayerPosition() == board.getDoorPosition()) {
-        System.out.println("Congratulations! you found the DOOR!");
-      }
-      else {
-        System.out.println("Keep moving. You have " + getMoveCount() + " moves left.");
-      }
+      //if (board.getPlayerPosition() == board.getDoorPosition()) {
+      //  System.out.println("Congratulations! you found the DOOR!");
+      //}
+      //else {
+       // System.out.println("Keep moving. You have " + getMoveCount() + " moves left.");
+      //}
     }
 
 
