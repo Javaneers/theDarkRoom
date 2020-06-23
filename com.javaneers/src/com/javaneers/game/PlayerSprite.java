@@ -1,6 +1,9 @@
 package com.javaneers.game;
 
-//the class takes care of methods, which move a Player on the GameBoard
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class PlayerSprite {
 
@@ -11,7 +14,7 @@ public class PlayerSprite {
   public void movePayer() throws IllegalArgumentException {
     int currentRow = 3; //board.getPlayerPosition("row");
     int currentCol = 4; //board.getPlayerPosition("col");
-    int input = PlayerInput.getInput();
+    int input = ReadPlayerInput.getInput();
     int i = getMoveCount();
 
     while (i > 0) {
