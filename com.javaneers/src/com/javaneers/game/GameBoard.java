@@ -1,5 +1,7 @@
 package com.javaneers.game;
 
+import java.util.Arrays;
+
 public class GameBoard {
   // GamePieces
   int freeSpace = 0;
@@ -35,9 +37,9 @@ public class GameBoard {
   }
 
   // BUSINESS METHODS
-  public void setupRoom() {
-    setDoorPosition(4, 3);
-    setPlayerPosition(3, 3);
+  public void setupBoard() {
+    setDoorPosition(4, 3);    // if roomSize is custom this has to be checked (needs to be against a wall)
+    setPlayerPosition(2, 2);
     setBoonCount(3);
 //    setBoonPosition();
     System.out.println("TheDarkRoom is ready...");
@@ -66,7 +68,7 @@ public class GameBoard {
 
   // ACCESSORS
   public void setDoorPosition(int a, int b) {
-    doorPosition =
+//    doorPosition =
     darkRoom[a][b] = 1;
   }
   public int getDoorPosition() { return doorPosition; }
@@ -103,11 +105,12 @@ public class GameBoard {
     for (int h[] : darkRoom) {
       for (int w : h) {
 //        System.out.print(w);
-        result.append(w + " ");
+        result.append(w).append(" ");
       }
 //      System.out.println(" ");
       result.append("\n");
     }
+    System.out.println(Arrays.deepToString(darkRoom));
     return "theDarkRoom currently looks like this: \n" + result;
   }
 
