@@ -5,35 +5,38 @@ package com.javaneers.game;
 public class PlayerSprite {
 
   private int moveCount = 5; //hardcoded here for now
+  GameBoard board = new GameBoard();
 
   //Business Methods
   public void movePayer() throws IllegalArgumentException {
-    int currentRow = GameBoard.getPlayerPosition( int a);
-    int currentCol = GameBoard.getPlayerPosition( int b);
-    String input = PlayerInteraction.getInput();
+    //int currentRow = board.getPlayerPosition();
+    //int currentCol = board.getPlayerPosition( int b);
+    int[][] pPosition = board.getPlayerPosition();
+    int input = ReadPlayerInput.getInput();
     int i = getMoveCount();
 
     while (i > 0) {
-      if (input.equals("right") && currentCol != GameBoard.getBoardWidth()) {
+      if (input.equals(2) && currentCol != GameBoard.getBoardWidth()) {
         currentCol += 1;
-      } else if (input.equals("left") && currentCol != 0) {
+        System.out.println("You took one step right.");
+      } else if (input.equals(4) && currentCol != 0) {
         currentCol -= 1;
-      } else if (input.equals("up") && currentRow != 0) {
+        System.out.println("You took one step left.");
+      } else if (input.equals(1) && currentRow != 0) {
         currentRow -= 1;
-      } else if (input.equals("down") && currentRow != GameBoard.getBoardHeight()) {
+        System.out.println("You took one step up.");
+      } else if (input.equals(3) && currentRow != GameBoard.getBoardHeight()) {
         currentRow += 1;
+        System.out.println("You took one step down.");
 
-      } else if ((input.equals("right") && currentCol == GameBoard.getBoardWidth())
-              || (input.equals("left") && currentCol == 0)
-              || (input.equals("up") && currentRow == 0)
-              || (input.equals("down") && currentRow == GameBoard.getBoardHeight())) {
+      } else {
         throw new IllegalArgumentException("You hit a wall, try other direction. Moves left: " + getMoveCount());
       }
       i -= 1;
       setMoveCount(i);
-      GameBoard.setPlayerPosition(int a, b);
+      board.setPlayerPosition(int a, b);
 
-      if (GameBoard.getPlayerPosition() == GameBoard.getDoorPosition()) {
+      if (board.getPlayerPosition() == board.getDoorPosition()) {
         System.out.println("Congratulations! you found the DOOR!");
       }
       else {
