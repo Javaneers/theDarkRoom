@@ -1,11 +1,41 @@
 package com.javaneers.game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReadPlayerInput {
-  private static String input = "2";
+  private static int input = 2;
+  //Restrict and reserve inputs for four cardinal directions and exiting the game
+  private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,3,4,0));
 
-  public static String getInput(){ return input; }
+
+
+  public static int getInput(){
+    Scanner inputMonitor = new Scanner(System.in);
+    System.out.println("Type 1-4 into console then press enter to move your player");
+
+    //Check input from console (System.in)
+    if (inputMonitor.hasNextInt()) {
+      int result = inputMonitor.nextInt();
+      if (allowableInputs.contains(result)) {
+        System.out.println("user inputted " + result);
+      }
+      else {
+        System.out.println(result + " is a number out of range\n");
+        getInput();
+      }
+
+    }
+    else {
+      String invalidType = inputMonitor.next();
+      System.out.println(invalidType + " is not a valid number\n");
+      getInput();
+    }
+    return input;
+
+  }
+
 
 
 }
