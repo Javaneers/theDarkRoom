@@ -12,9 +12,9 @@ public class PlayerSprite {
 
 
   //Business Methods
-  public void movePayer() throws IllegalArgumentException {
-    int currentRow = board.getPlayerPosition();
-    int currentCol = board.getPlayerPosition();
+  public void movePlayer() throws IllegalArgumentException {
+    int currentRow = 3;//board.getPlayerPosition.get(int a);
+    int currentCol = 2;//board.getPlayerPosition.get(int b);
     int input;
     int i = getMoveCount();
 
@@ -35,10 +35,11 @@ public class PlayerSprite {
 
       } else
         throw new IllegalArgumentException("You hit a wall, try other direction. Moves left: " + getMoveCount());
-      }
       i -= 1;
       setMoveCount(i);
-      //board.setPlayerPosition(...); //
+      board.updateBoard("player", currentRow, currentCol);
+    }
+
 
       //if (board.getPlayerPosition() == board.getDoorPosition()) {
       //  System.out.println("Congratulations! you found the DOOR!");
@@ -46,6 +47,8 @@ public class PlayerSprite {
       //else {
        // System.out.println("Keep moving. You have " + getMoveCount() + " moves left.");
       //}
+
+
     }
 
 
@@ -53,9 +56,10 @@ public class PlayerSprite {
     public int getMoveCount() { return moveCount; }
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
 
-  @Override
-  public String toString() { return getClass().getSimpleName() + "Moves left:" + getMoveCount();}
 
+
+  @Override
+  public String toString() { return getClass().getSimpleName() + " Moves left:" + getMoveCount();}
 
 
   }

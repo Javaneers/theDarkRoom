@@ -26,7 +26,7 @@ public class GameBoard {
   public Map<String, Integer> playerPosition = new HashMap<>() {
     {
       put("row", 3);
-      put("col", 3);
+      put("col", 4);
     }
   };
 //  public Map<String, Integer> boons = new HashMap<>() {
