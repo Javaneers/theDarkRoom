@@ -13,7 +13,7 @@ public class ReadScreensInput {
 
   public static int getInput(){
     Scanner inputMonitor = new Scanner(System.in);
-    System.out.println("Press 1 to read the Rules\nPress 2 to start the game\nPress 0 to exit the application");
+    System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
 
     //Check input from console (System.in)
     if (inputMonitor.hasNextInt()) {
@@ -22,14 +22,14 @@ public class ReadScreensInput {
         System.out.println("user inputted " + result);
       }
       else {
-        System.out.println(result + " is a number out of range\n");
+        System.out.println(result + " is not mapped to a Menu Item\n");
         getInput();
       }
 
     }
     else {
       String invalidType = inputMonitor.next();
-      System.out.println(invalidType + " is not a valid number\n");
+      System.out.println(invalidType + " is not a valid NUMBER\n");
       getInput();
     }
     return input;

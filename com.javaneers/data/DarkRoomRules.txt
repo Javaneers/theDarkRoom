@@ -1,0 +1,8 @@
+Welcome to the Dark Room
+
+In this text-based RPG, you are a Player in a Dark Room... A very Dark Room.
+You will spawn in a room of unknown dimensions, which can be thought of as
+A Game Board divided up into squares. You will be given a limited number of
+Moves to navigate through the Dark Room, find the Escape Door, and make your
+Escape. Follow the prompts for available actions. Submit your selection by
+typing it into the console and then press 'Enter' or 'Return'.
