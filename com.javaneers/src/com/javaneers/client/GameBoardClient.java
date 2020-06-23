@@ -26,21 +26,28 @@ public class GameBoardClient {
 //    testBoard.updateBoard("player", 3,4);
 //    System.out.println("After player moved to row3, col4: " + testBoard.toString());
 
-    testBoard.setupBoard();
-    System.out.println("testBoard after setup: \n" + testBoard.toString());
+//    testBoard.setupBoard();
+//    System.out.println("testBoard.toString() after setup: \n " + testBoard.toString());
+//
+//    System.out.println("getPlayerPosition: " +
+//      testBoard.getPlayerPosition());
+//    System.out.println("getPlayerPosition('row') --> " +
+//      testBoard.getPlayerPosition("row"));
+//    System.out.println("getPlayerPosition('col') --> " +
+//      testBoard.getPlayerPosition("col"));
+//
+//    testBoard.updateBoard("player", testBoard.getPlayerPosition("row"), testBoard.getPlayerPosition("col") + 1);
+//    testBoard.updateBoard("player", 1, 3);
+//    System.out.println("testBoard.toString() after updating player position (col + 1): \n " + testBoard.toString());
 
-    System.out.println("getPlayerPosition: " +
-      testBoard.getPlayerPosition());
-    System.out.println("getPlayerPosition('row') --> " +
-      testBoard.getPlayerPosition("row"));
-    System.out.println("getPlayerPosition('col') --> " +
-      testBoard.getPlayerPosition("col"));
+    System.out.println("testBoard.doorPosition.values() => " + testBoard.doorPosition.values());
 
-    testBoard.updateBoard("player", testBoard.getPlayerPosition("row"), testBoard.getPlayerPosition("col") + 1);
-    System.out.println("after moving player to row1, col2: " + testBoard.toString());
+    testBoard.updateBoard("player",
+      testBoard.getPlayerPosition("row"),
+      testBoard.getPlayerPosition("col") + 1);
 
-    testBoard.updateBoard("player", 1, 3);
-    System.out.println("after moving player to row1, col3: " + testBoard.toString());
+    System.out.println(
+      "updated playerPosition.values() => " + testBoard.playerPosition.values());
 
   }
 

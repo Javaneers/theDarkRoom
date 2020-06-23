@@ -17,16 +17,18 @@ public class GameBoard {
   int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
-    public Map<String, Integer> doorPosition = new HashMap<>() {
+    public Map<String, ?> doorPosition = new HashMap<>() {
     {
-      put("row", 3);
-      put("col", 3);
+      put("row", 0);
+      put("col", 0);
+      put("hash", "r3c3");
     }
   };
-  public Map<String, Integer> playerPosition = new HashMap<>() {
+  public Map<String, ?> playerPosition = new HashMap<>() {
     {
-      put("row", 3);
-      put("col", 4);
+      put("row", 2);
+      put("col", 2);
+      put("hash", "r2c2");
     }
   };
   // TODO: implement boons (either via Class or collection)
@@ -104,6 +106,8 @@ public class GameBoard {
   public void setPlayerPosition(int row, int col) {
     playerPosition.put("row", row);
     playerPosition.put("col", col);
+    StringBuilder updatedPlayerHash = new StringBuilder("r").append(row).append("c").append(col);
+    playerPosition.put("hash", updatedPlayerHash);
   }
   public StringBuilder getPlayerPosition() {
     StringBuilder result = new StringBuilder();
@@ -164,8 +168,8 @@ public class GameBoard {
     return "theDarkRoom currently looks like this: \n" + result;
     */
     return "Current DarkRoom stats: " +
-      ": \n  playerPosition=" + getPlayerPosition() +
-      ", \n  doorPosition=" + getDoorPosition() +
+      "  \n playerPosition=" + getPlayerPosition() +
+      ", \n doorPosition=" + getDoorPosition() +
 //      ", \n  boonsLeftToFind=" + getBoonCount() +
 //      ", \n  playerCollectedBoons=" + getCollectedBoons() +
 //      ", \n  boonPositions=" + getBoonPositions()
