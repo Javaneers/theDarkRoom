@@ -11,36 +11,42 @@ public class GameBoard {
   int player    = 2;
   int boon      = 3;
 
+  // GamePiece location designators
+  public StringBuilder doorHash = new StringBuilder("Door position not yet set");
+  public StringBuilder playerHash = new StringBuilder("Player position not yet set");
+
   // Board Properties (and their default values)
   public static int boardHeight = 5;
   public static int boardWidth = 5;
+
+  // TODO: remove this after ALPHA-version complete & before beta-version
+  // HARDCODED FOR TESTING PURPOSES
   int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
-    public Map<String, ?> doorPosition = new HashMap<>() {
+    public Map<String, Integer> doorPosition = new HashMap<>() {
     {
       put("row", 0);
       put("col", 0);
-      put("hash", "r3c3");
     }
   };
-  public Map<String, ?> playerPosition = new HashMap<>() {
+  public Map<String, Integer> playerPosition = new HashMap<>() {
     {
       put("row", 2);
       put("col", 2);
-      put("hash", "r2c2");
     }
   };
   // TODO: implement boons (either via Class or collection)
 //  public Map<String, Integer> boons = new HashMap<>() {
 //    {
-//      put("boon1", )
+//      put("boon1row", 0);
+//      put("boon1col", 2);
 //    }
 //  };
 
   // GamePiece Status
   int boonCount = 3;
-  boolean doorAttemptable = true;
+  boolean doorCanBeAttempted = true;
 
   // TODO: potentially make these classes
   // Door door = new Door();
@@ -63,6 +69,7 @@ public class GameBoard {
 
   // BUSINESS METHODS
   public void setupBoard() {
+    // TODO: decide if this method generates a board on this line or if gameplay generates a 'new' board
     updateBoard("player", randomInt(0, boardHeight - 1), randomInt(0, boardWidth - 1));
     updateBoard("door", randomInt(0, 1), randomInt(0, 1));
     System.out.println("TheDarkRoom is ready...");
@@ -95,11 +102,15 @@ public class GameBoard {
     this.boonCount--;
   }
 
+  public StringBuilder updateHash(int row, int col) {
+    return new StringBuilder("r").append(row).append("c").append(col);
+  }
 
   // ACCESSORS
   public void setDoorPosition(int row, int col) {
     doorPosition.put("row", row);
     doorPosition.put("col", col);
+    doorHash.delete(0, doorHash.length()).append(updateHash(row, col));
   }
   public Map<String, Integer> getDoorPosition() { return doorPosition; }
 
@@ -107,7 +118,7 @@ public class GameBoard {
     playerPosition.put("row", row);
     playerPosition.put("col", col);
     StringBuilder updatedPlayerHash = new StringBuilder("r").append(row).append("c").append(col);
-    playerPosition.put("hash", updatedPlayerHash);
+    playerHash = updateHash(row, col);
   }
   public StringBuilder getPlayerPosition() {
     StringBuilder result = new StringBuilder();

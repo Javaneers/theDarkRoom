@@ -49,6 +49,14 @@ public class GameBoardClient {
     System.out.println(
       "updated playerPosition.values() => " + testBoard.playerPosition.values());
 
+    System.out.println("\t\t\tplayerHash after 1st step: " + testBoard.playerHash);
+
+    testBoard.updateBoard("player",
+      testBoard.getPlayerPosition("row"),
+      testBoard.getPlayerPosition("col") + 1);
+    System.out.println(
+      "\t\t\tplayerHash after 2nd step: " + testBoard.playerHash
+    );
   }
 
 }
