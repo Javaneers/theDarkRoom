@@ -1,20 +1,21 @@
 package com.javaneers.game;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class PlayerSprite {
 
   private int moveCount = 5; //hardcoded here for now
   GameBoard board = new GameBoard();
 
+  //ctors
+  public PlayerSprite() {};
+  public PlayerSprite(int moveCount) {
+    this.moveCount = moveCount;
+  }
 
   //Business Methods
   public void movePlayer() throws IllegalArgumentException {
-    int currentRow = 3;//board.getPlayerPosition.get(int a);
-    int currentCol = 2;//board.getPlayerPosition.get(int b);
+    int currentRow = board.getPlayerPosition("row");
+    int currentCol = board.getPlayerPosition("col");
     int input;
     int i = getMoveCount();
 
@@ -34,28 +35,17 @@ public class PlayerSprite {
         System.out.println("You took one step down.");
 
       } else
-        throw new IllegalArgumentException("You hit a wall, try other direction. Moves left: " + getMoveCount());
+        throw new IllegalArgumentException("You hit a wall, try other direction");
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);
+      System.out.println("Moves left: " + getMoveCount()); //might be not needed inside movePlayer()
+     }
     }
-
-
-      //if (board.getPlayerPosition() == board.getDoorPosition()) {
-      //  System.out.println("Congratulations! you found the DOOR!");
-      //}
-      //else {
-       // System.out.println("Keep moving. You have " + getMoveCount() + " moves left.");
-      //}
-
-
-    }
-
 
     //getters and setters
     public int getMoveCount() { return moveCount; }
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
-
 
 
   @Override
