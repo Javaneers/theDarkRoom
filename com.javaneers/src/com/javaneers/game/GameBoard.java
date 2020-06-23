@@ -11,33 +11,42 @@ public class GameBoard {
   int player    = 2;
   int boon      = 3;
 
+  // GamePiece location designators
+  public StringBuilder doorHash = new StringBuilder("Door position not yet set");
+  public StringBuilder playerHash = new StringBuilder("Player position not yet set");
+
   // Board Properties (and their default values)
   public static int boardHeight = 5;
   public static int boardWidth = 5;
+
+  // TODO: remove this after ALPHA-version complete & before beta-version
+  // HARDCODED FOR TESTING PURPOSES
   int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
     public Map<String, Integer> doorPosition = new HashMap<>() {
     {
-      put("row", 3);
-      put("col", 3);
+      put("row", 0);
+      put("col", 0);
     }
   };
   public Map<String, Integer> playerPosition = new HashMap<>() {
     {
-      put("row", 3);
-      put("col", 4);
+      put("row", 2);
+      put("col", 2);
     }
   };
+  // TODO: implement boons (either via Class or collection)
 //  public Map<String, Integer> boons = new HashMap<>() {
 //    {
-//      put("boon1", )
+//      put("boon1row", 0);
+//      put("boon1col", 2);
 //    }
 //  };
 
   // GamePiece Status
   int boonCount = 3;
-  boolean doorAttemptable = true;
+  boolean doorCanBeAttempted = true;
 
   // TODO: potentially make these classes
   // Door door = new Door();
@@ -53,16 +62,14 @@ public class GameBoard {
   }
 
 
-
-//    int random = x-((int)Math.round((Math.random())*(x-y)));
-
-  // TODO: make a random Class to perform this
+  // TODO: make a Class to perform this (potentially named RandomInt)
   public int randomInt(int min, int max) {
     return max - ((int)Math.round((Math.random())*(max-min)));
   }
 
   // BUSINESS METHODS
   public void setupBoard() {
+    // TODO: decide if this method generates a board on this line or if gameplay generates a 'new' board
     updateBoard("player", randomInt(0, boardHeight - 1), randomInt(0, boardWidth - 1));
     updateBoard("door", randomInt(0, 1), randomInt(0, 1));
     System.out.println("TheDarkRoom is ready...");
@@ -91,41 +98,27 @@ public class GameBoard {
     }
   }
 
-
-  /* TODO: implement these methods or a stand-in equivalent for the GamePlay class
-  public Door createDoor() { }
-
-  public spawnPlayer() {
-    PlayerSprite playerPiece = new PlayerSprite();
-    setPlayerPosition();
-  }
-
-  public Boon spawnBoon() { }
-
-  public collisionTest() { }
-
-  public void updatePlayerPosition() { }
-
-   */
-
   public void decrementBoonCount() {
     this.boonCount--;
   }
 
+  public StringBuilder updateHash(int row, int col) {
+    return new StringBuilder("r").append(row).append("c").append(col);
+  }
 
   // ACCESSORS
   public void setDoorPosition(int row, int col) {
-    darkRoom[row][col] = 1;
     doorPosition.put("row", row);
     doorPosition.put("col", col);
+    doorHash.delete(0, doorHash.length()).append(updateHash(row, col));
   }
   public Map<String, Integer> getDoorPosition() { return doorPosition; }
 
   public void setPlayerPosition(int row, int col) {
-    darkRoom[row][col] = 2;
-    darkRoom[getPlayerPosition("row")][getPlayerPosition("col")] = 0;
     playerPosition.put("row", row);
     playerPosition.put("col", col);
+    StringBuilder updatedPlayerHash = new StringBuilder("r").append(row).append("c").append(col);
+    playerHash = updateHash(row, col);
   }
   public StringBuilder getPlayerPosition() {
     StringBuilder result = new StringBuilder();
@@ -169,9 +162,10 @@ public class GameBoard {
   public static int getBoardHeight() { return boardHeight; }
   public static int getBoardWidth() { return boardWidth; }
 
-
+  // TODO: [STRETCH GOAL] implement a method which paints the board (aka darkRoom), taking args of playPosition, doorPosition, and boonPosition
   @Override
   public String toString() {
+    /*
     var result = new StringBuilder();
     for (int h[] : darkRoom) {
       for (int w : h) {
@@ -183,6 +177,14 @@ public class GameBoard {
     }
     System.out.println(Arrays.deepToString(darkRoom));
     return "theDarkRoom currently looks like this: \n" + result;
+    */
+    return "Current DarkRoom stats: " +
+      "  \n playerPosition=" + getPlayerPosition() +
+      ", \n doorPosition=" + getDoorPosition() +
+//      ", \n  boonsLeftToFind=" + getBoonCount() +
+//      ", \n  playerCollectedBoons=" + getCollectedBoons() +
+//      ", \n  boonPositions=" + getBoonPositions()
+      "";
   }
 
 }
