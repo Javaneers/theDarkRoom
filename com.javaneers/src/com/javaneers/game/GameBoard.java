@@ -113,6 +113,7 @@ public class GameBoard {
     doorHash.delete(0, doorHash.length()).append(updateHash(row, col));
   }
   public Map<String, Integer> getDoorPosition() { return doorPosition; }
+  public StringBuilder getDoorHash() { return doorHash; }
 
   public void setPlayerPosition(int row, int col) {
     playerPosition.put("row", row);
@@ -142,6 +143,7 @@ public class GameBoard {
     }
     return result;
   }
+  public StringBuilder getPlayerHash() { return playerHash; }
 
   /*
   TODO: [STRETCH] make dynamic (able to handle 1, 2, or 3 boons) <-- will be based on board HxW
