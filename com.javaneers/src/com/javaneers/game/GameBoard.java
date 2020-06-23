@@ -56,12 +56,10 @@ public class GameBoard {
 
 //    int random = x-((int)Math.round((Math.random())*(x-y)));
 
-  // TODO: make a random class to perform this
+  // TODO: make a random Class to perform this
   public int randomInt(int min, int max) {
     return max - ((int)Math.round((Math.random())*(max-min)));
   }
-
-  int randomRow = boardHeight - (int)Math.round(Math.random() * boardHeight);
 
   // BUSINESS METHODS
   public void setupBoard() {
@@ -88,7 +86,8 @@ public class GameBoard {
         "please ensure gamePiece argument is: 'player', 'door', or 'boon'");
     }
     finally {
-      System.out.println("Updating " + gamePiece + " position...");
+      System.out.println("Updating " + gamePiece +
+        " position to row: " + row + ", col: " + col);
     }
   }
 
@@ -115,20 +114,36 @@ public class GameBoard {
 
 
   // ACCESSORS
-  public void setDoorPosition(int a, int b) {
-    darkRoom[a][b] = 1;
-    doorPosition.put("row", a);
-    doorPosition.put("col", b);
+  public void setDoorPosition(int row, int col) {
+    darkRoom[row][col] = 1;
+    doorPosition.put("row", row);
+    doorPosition.put("col", col);
   }
   public Map<String, Integer> getDoorPosition() { return doorPosition; }
 
-  public void setPlayerPosition(int a, int b) {
-    darkRoom[a][b] = 2;
-    playerPosition.put("row", a);
-    playerPosition.put("col", b);
+  public void setPlayerPosition(int row, int col) {
+    darkRoom[row][col] = 2;
+    playerPosition.put("row", row);
+    playerPosition.put("col", col);
   }
   public int getPlayerPosition() {
     int result = playerPosition.get("row") + playerPosition.get("col");
+    return result;
+  }
+  public int getPlayerPosition(String rowOrCol) {
+    int result = 404;
+    try {
+      if ("row".equals(rowOrCol)) {
+        result = playerPosition.get("row");
+      }
+      else if ("col".equals(rowOrCol)) {
+        result = playerPosition.get("col");
+      }
+    } catch (Exception e) {
+      System.out.println("Error + " + result +
+        "'" + rowOrCol + "' is an invalid getRequest on playPosition." +
+        "Please indicate 'row' or 'col'");
+    }
     return result;
   }
 
