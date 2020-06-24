@@ -3,7 +3,6 @@ package com.javaneers.game;
 //This class contains methods for printing to the console
 public class ConsoleOutput {
   //PLAYER SPRITE
-  //@beginning of playersprite while loop
   static void printMoveSelectionsPrompt() {
     System.out.println("Please choose the direction you'd like to attempt to move:" +
             "\t1. Move Up\n" +
@@ -38,6 +37,13 @@ public class ConsoleOutput {
     System.out.println("Moves remaining: " + moveCount);
   }
   //GAMEBOARD
+  static void printSetupBoardCompleted(){
+    System.out.println("Your DarkRoom awaits..");
+  }
+  static void printGamePiecePosition(String gamePiece, int row, int col){
+    System.out.println("Updating " + gamePiece +
+            " position to row: " + row + ", col: " + col);
+  }
 
   //READPLAYERINPUT
   static void printPlayerMoveSubmissionPrompt(){
