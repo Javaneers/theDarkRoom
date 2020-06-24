@@ -20,30 +20,39 @@ public class PlayerSprite {
     int i = getMoveCount();
 
     while (i > 0) {
-
+      System.out.println("----------------------------------------------------------");
       // Prompt player for move selection
       System.out.println("Please choose the direction you'd like to attempt to move: ");
       System.out.println("    1. Move Up");
       System.out.println("    2. Move Right");
       System.out.println("    3. Move Down");
-      System.out.println("    4. Move Left \n");
+      System.out.println("    4. Move Left \n\n");
 
       input = ReadPlayerInput.getInput();
-      if (input == 2 && currentCol != board.getBoardWidth()) {
-        currentCol += 1;
-        System.out.println("You took one step right.");
-      } else if (input == 4 && currentCol != 0) {
-        currentCol -= 1;
-        System.out.println("You took one step left.");
-      } else if (input == 1 && currentRow != 0) {
+
+      // player choice is '1' --> UP
+      if (input == 1 && currentRow != 0) {
         currentRow -= 1;
         System.out.println("You took one step up.");
-      } else if (input == 3 && currentRow != board.getBoardHeight()) {
+
+      // player choice is '2' --> RIGHT
+      } else if (input == 2 && currentCol != board.getBoardWidth() - 1) {
+        currentCol += 1;
+        System.out.println("You took one step right.");
+
+      // player choice is '3' --> DOWN
+      } else if (input == 3 && currentRow != board.getBoardHeight() - 1) {
         currentRow += 1;
         System.out.println("You took one step down.");
 
-      } else
+      // player choice is '4' --> LEFT
+      } else if (input == 4 && currentCol != 0) {
+        currentCol -= 1;
+        System.out.println("You took one step left.");
+
+      }  else
         System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
+
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);
