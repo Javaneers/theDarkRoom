@@ -43,7 +43,7 @@ public class PlayerSprite {
         System.out.println("You took one step down.");
 
       } else
-        throw new IllegalArgumentException("You hit a wall, try other direction");
+        System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);
