@@ -1,5 +1,6 @@
 package com.javaneers.game;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,23 +14,23 @@ public class ReadScreensInput {
   public static int getInput(){
     int result = 0;
     Scanner inputMonitor = new Scanner(System.in);
-    System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
+    ConsoleOutput.printMenuItemSelectionPrompt();
 
     //Check input from console (System.in)
     if (inputMonitor.hasNextInt()) {
       result = inputMonitor.nextInt();
       if (allowableInputs.contains(result)) {
-        System.out.println("user inputted " + result);
+        ConsoleOutput.printInputConfirmation(result);
       }
       else {
-        System.out.println(result + " is not mapped to a Menu Item\n");
+        ConsoleOutput.printNotMappedMenuItem(result);
         getInput();
       }
 
     }
     else {
       String invalidType = inputMonitor.next();
-      System.out.println(invalidType + " is not a valid NUMBER\n");
+      ConsoleOutput.printNotANumber(invalidType);
       getInput();
     }
     return result;

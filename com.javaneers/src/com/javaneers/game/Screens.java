@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-//Possibly interface for display screens
 public class Screens {
   private String headerText;
   private Collection<String> header;

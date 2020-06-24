@@ -72,7 +72,7 @@ public class GameBoard {
     // TODO: decide if this method generates a board on this line or if gameplay generates a 'new' board
     updateBoard("player", randomInt(0, boardHeight - 1), randomInt(0, boardWidth - 1));
     updateBoard("door", randomInt(0, 1), randomInt(0, 1));
-    System.out.println("Your Dark Room awaits..");
+    ConsoleOutput.printSetupBoardCompleted();
   }
 
 
@@ -89,12 +89,11 @@ public class GameBoard {
 //        totalBoonCheck();
       }
     } catch (Exception e) {
-      System.out.println("Invalid updateBoard parameters, " +
+      System.err.println(e + "Invalid updateBoard parameters, " +
         "please ensure gamePiece argument is: 'player', 'door', or 'boon'");
     }
     finally {
-      System.out.println("Updating " + gamePiece +
-        " position to row: " + row + ", col: " + col);
+      ConsoleOutput.printGamePiecePosition(gamePiece,row,col);
     }
   }
 
@@ -137,7 +136,7 @@ public class GameBoard {
         result = playerPosition.get("col");
       }
     } catch (Exception e) {
-      System.out.println("Error + " + result +
+      System.err.println(e + "Error + " + result +
         "'" + rowOrCol + "' is an invalid getRequest on playPosition." +
         "Please indicate 'row' or 'col'");
     }
