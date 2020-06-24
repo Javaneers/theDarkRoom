@@ -30,22 +30,15 @@ public class GamePlay {
 
     }
 
-    //Testing printing text file to console
-//    try { Files.lines(Path.of("com.javaneers","data","DarkRoomTitle.txt")).forEach(line -> System.out.println(line));
-//    }
-//    catch (IOException e) {
-//      e.printStackTrace();
-//    }
-
 
     GameBoard board1 = new GameBoard(5,5);
     //GameBoard might initialize player eventually, doing that manually in the client for now
     PlayerSprite player1 = new PlayerSprite();
     //player1.movePlayer();
-    Screens winScreen = new Screens("You Win","",new ArrayList<String>(List.of("Play Again")));
-    winScreen.drawHeader();
-
-    System.out.println("placeholder text");
+    Screens winScreen = new Screens("You Won","",new ArrayList<String>(List.of("Play Again","exit")));
+    winScreen.drawScreen();
+    Screens gameOverScreen = new Screens("Game Over","GameOver",new ArrayList<String>(List.of("Play Again","exit")));
+    gameOverScreen.drawScreen();
   }
 
 }

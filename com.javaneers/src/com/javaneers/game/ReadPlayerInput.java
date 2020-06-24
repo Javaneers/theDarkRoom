@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadPlayerInput {
-  //private static int inputResult = 2;
   //Restrict and reserve inputs for four cardinal directions and exiting the game
   private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,3,4,0));
 
