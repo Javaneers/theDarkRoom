@@ -81,9 +81,9 @@ public class GameBoard {
       if ("player".equals(gamePiece)) {
         setPlayerPosition(row, col);
       }
-      else if ("door".equals(gamePiece)) {
-        setDoorPosition(row, col);
-      }
+//      else if ("door".equals(gamePiece)) {
+//        setDoorPosition(row, col);
+//      }
       else if ("boon".equals(gamePiece)) {
 //        setBoonPosition();
 //        totalBoonCheck();
