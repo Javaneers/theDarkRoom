@@ -2,7 +2,7 @@ package com.javaneers.game;
 
 //This class contains methods for printing to the console
 public class ConsoleOutput {
-  //PLAYER SPRITE
+  //PLAYER_SPRITE
   static void printMoveSelectionsPrompt() {
     System.out.println("Please choose the direction you'd like to attempt to move:" +
             "\t1. Move Up\n" +
@@ -36,7 +36,7 @@ public class ConsoleOutput {
   static void printMoveCount(int moveCount){
     System.out.println("Moves remaining: " + moveCount);
   }
-  //GAMEBOARD
+  //GAME_BOARD
   static void printSetupBoardCompleted(){
     System.out.println("Your DarkRoom awaits..");
   }
@@ -45,19 +45,16 @@ public class ConsoleOutput {
             " position to row: " + row + ", col: " + col);
   }
 
-  //READPLAYERINPUT
+  //READ_PLAYER_INPUT/READ_SCREENS_INPUT
   static void printPlayerMoveSubmissionPrompt(){
     System.out.println("Type 1-4 into console then press enter to move your player");
   }
   static void printNumberOutOfRange(int input){
     System.out.println(input + " is a number out of range\n");
   }
-
-  //READSCREENSINPUT
-  //line 16
   static void printMenuItemSelectionPrompt(){
     System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
-  }// line 22
+  }
   static void printInputConfirmation(int input) {
     System.out.println("user inputted " + input);
   }
