@@ -4,7 +4,7 @@ package com.javaneers.game;
 public class ConsoleOutput {
   //PLAYER SPRITE
   //@beginning of playersprite while loop
-  static void printMovePrompt() {
+  static void printMoveSelectionsPrompt() {
     System.out.println("Please choose the direction you'd like to attempt to move:" +
             "\t1. Move Up\n" +
             "\t2. Move Right\n" +
@@ -15,6 +15,12 @@ public class ConsoleOutput {
   //GAMEBOARD
 
   //READPLAYERINPUT
+  static void printPlayerMoveSubmissionPrompt(){
+    System.out.println("Type 1-4 into console then press enter to move your player");
+  }
+  static void printNumberOutOfRange(int input){
+    System.out.println(input + " is a number out of range\n");
+  }
 
   //READSCREENSINPUT
   //line 16
@@ -30,7 +36,7 @@ public class ConsoleOutput {
   static void printNotANumber(String input){
     System.out.println(input + " is not a valid NUMBER\n");
   }
-  
+
   //SCREENS
 
 
