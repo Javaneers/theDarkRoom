@@ -20,6 +20,14 @@ public class PlayerSprite {
     int i = getMoveCount();
 
     while (i > 0) {
+
+      // Prompt player for move selection
+      System.out.println("Please choose the direction you'd like to attempt to move: ");
+      System.out.println("    1. Move Up");
+      System.out.println("    2. Move Right");
+      System.out.println("    3. Move Down");
+      System.out.println("    4. Move Left \n");
+
       input = ReadPlayerInput.getInput();
       if (input == 2 && currentCol != board.getBoardWidth()) {
         currentCol += 1;
