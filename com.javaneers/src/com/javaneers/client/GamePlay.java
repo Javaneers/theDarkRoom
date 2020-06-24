@@ -19,6 +19,7 @@ public class GamePlay {
     //
     Screens titleScreen = new Screens("Dark Room","DarkRoomTitle",new ArrayList<String>(List.of("Rules","Start","exit")));
     titleScreen.drawScreen();
+    //prompt user for input
     int menuInput = ReadScreensInput.getInput();
     System.out.println(menuInput);
     if (menuInput == 1) {
@@ -35,7 +36,7 @@ public class GamePlay {
     //GameBoard might initialize player eventually, doing that manually in the client for now
     PlayerSprite player1 = new PlayerSprite();
     //player1.movePlayer();
-    Screens winScreen = new Screens("You Won","",new ArrayList<String>(List.of("Play Again","exit")));
+    Screens winScreen = new Screens("You Won","YouWon",new ArrayList<String>(List.of("Play Again","exit")));
     winScreen.drawScreen();
     Screens gameOverScreen = new Screens("Game Over","GameOver",new ArrayList<String>(List.of("Play Again","exit")));
     gameOverScreen.drawScreen();
