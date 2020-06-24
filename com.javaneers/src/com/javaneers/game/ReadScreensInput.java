@@ -5,19 +5,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadScreensInput {
-  private static int input = 2;
+  //private static int input = 2;
   //Restrict and reserve inputs for four cardinal directions and exiting the game
   private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,0));
 
 
 
   public static int getInput(){
+    int result = 0;
     Scanner inputMonitor = new Scanner(System.in);
     System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
 
     //Check input from console (System.in)
     if (inputMonitor.hasNextInt()) {
-      int result = inputMonitor.nextInt();
+      result = inputMonitor.nextInt();
       if (allowableInputs.contains(result)) {
         System.out.println("user inputted " + result);
       }
@@ -32,7 +33,7 @@ public class ReadScreensInput {
       System.out.println(invalidType + " is not a valid NUMBER\n");
       getInput();
     }
-    return input;
+    return result;
 
   }
 

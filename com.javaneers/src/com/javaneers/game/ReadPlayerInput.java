@@ -5,19 +5,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadPlayerInput {
-  private static int input = 2;
+  //private static int inputResult = 2;
   //Restrict and reserve inputs for four cardinal directions and exiting the game
   private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,3,4,0));
 
 
 
   public static int getInput(){
+    //Forced to initialize result variable because compiler didn't think recursion would resolve null values
+    int result = 0;
     Scanner inputMonitor = new Scanner(System.in);
     System.out.println("Type 1-4 into console then press enter to move your player");
 
     //Check input from console (System.in)
     if (inputMonitor.hasNextInt()) {
-      int result = inputMonitor.nextInt();
+      result = inputMonitor.nextInt();
       if (allowableInputs.contains(result)) {
         System.out.println("user inputted " + result);
       }
@@ -32,7 +34,7 @@ public class ReadPlayerInput {
       System.out.println(invalidType + " is not a valid number\n");
       getInput();
     }
-    return input;
+    return result;
 
   }
 

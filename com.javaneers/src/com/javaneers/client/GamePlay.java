@@ -16,28 +16,28 @@ import java.util.stream.Stream;
 public class GamePlay {
 
   public static void main(String[] args) {
+    //
+    Screens titleScreen = new Screens("Dark Room","DarkRoomTitle",new ArrayList<String>(List.of("Rules","Start","exit")));
+    titleScreen.drawScreen();
+    int menuInput = ReadScreensInput.getInput();
+    System.out.println(menuInput);
+    if (menuInput == 1) {
+      Screens rulesScreen = new Screens("Game Rules", "GameRules", new ArrayList<String>(List.of("Main Menu", "exit")));
+      rulesScreen.drawScreen();
+    } else if (menuInput == 2){
 
-    Screens titleScreen = new Screens("Dark Room","",new ArrayList<String>(List.of("Rules","Start","exit")));
-    titleScreen.drawHeader();
-    titleScreen.drawMenu();
+    } else if (menuInput == 0) {
+
+    }
+
     //Testing printing text file to console
-    try (BufferedReader reader = new BufferedReader(new FileReader("C:\\StudentWork\\IntmJ\\MiniProject\\theDarkRoom\\com.javaneers\\data\\DarkRoomRules.txt"))) {
-      // here is an easy way to dump out all the lines
-      // you may not have worked with Java 8 streams, so we give this to you
-      Stream<String> lines = reader.lines();
-      lines.forEach(System.out::println);
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-
-//    try { Files.lines(Path.of("data","DarkRoomRules.txt")).forEach(line -> System.out.println(line));
+//    try { Files.lines(Path.of("com.javaneers","data","DarkRoomTitle.txt")).forEach(line -> System.out.println(line));
 //    }
 //    catch (IOException e) {
 //      e.printStackTrace();
 //    }
 
-    ReadScreensInput.getInput();
+
     GameBoard board1 = new GameBoard(5,5);
     //GameBoard might initialize player eventually, doing that manually in the client for now
     PlayerSprite player1 = new PlayerSprite();

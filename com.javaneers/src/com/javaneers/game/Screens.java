@@ -1,5 +1,8 @@
 package com.javaneers.game;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,19 +11,20 @@ import java.util.List;
 public class Screens {
   private String headerText;
   private Collection<String> header;
-  private String paragraph;
+  private String bodyText;
   private List<String> menuOptions;
 
-  public Screens(String header, String paragraph, List<String> menuOptions) {
+  public Screens(String header, String bodyText, List<String> menuOptions) {
     this.setHeaderText(header);
+    this.setBodyText(bodyText);
     this.setMenuOptions(menuOptions);
 
   }
 
-  private void drawScreen() {
-    drawHeader ();
-    drawParagraph ();
-    drawMenu ();
+  public void drawScreen() {
+    drawHeader();
+    drawBody();
+    drawMenu();
   }
 
   public void drawHeader () {
@@ -28,11 +32,18 @@ public class Screens {
       for (String row :headerRows) {
         System.out.println(row);
     }
-    System.out.println("\n\n");
+    System.out.println("\n");
   }
 
-  private void drawParagraph (){
-    System.out.println(getParagraph());
+  private void drawBody(){
+    try {
+      Files.lines(Path.of("com.javaneers","data",(getBodyText() + ".txt"))).forEach(line -> System.out.println(line));
+      System.out.println("\n");
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 
   public void drawMenu () {
@@ -84,7 +95,7 @@ public class Screens {
   // Getters Setters
   public String getHeaderText(){ return this.headerText; }
   private Collection<String> getHeader() { return this.header; }
-  public String getParagraph(){ return this.paragraph; }
+  public String getBodyText(){ return this.bodyText; }
   public List<String> getMenuOptions(){ return this.menuOptions;}
 
   private void setHeaderText(String headerText) {
@@ -98,7 +109,7 @@ public class Screens {
     }
     this.headerText = result.toLowerCase();
   }
-  private void setParagraph(){}
+  private void setBodyText(String bodyText){ this.bodyText = bodyText; }
   private void setMenuOptions(List<String> options){ this.menuOptions = options;}
 
 
