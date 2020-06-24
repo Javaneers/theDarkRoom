@@ -6,25 +6,25 @@ import java.util.Map;
 // init doorImplementation branch
 public class GameBoard {
   // GamePieces
-  int freeSpace = 0;
-  int door      = 1;
-  int player    = 2;
-  int boon      = 3;
+  private int freeSpace = 0;
+  private int door      = 1;
+  private int player    = 2;
+  private int boon      = 3;
 
   // GamePiece location designators
-  public StringBuilder doorHash = new StringBuilder("Door position not yet set");
-  public StringBuilder playerHash = new StringBuilder("Player position not yet set");
+  private StringBuilder doorHash = new StringBuilder("Door position not yet set");
+  private StringBuilder playerHash = new StringBuilder("Player position not yet set");
 
   // Board Properties (and their default values)
-  public static int boardHeight = 5;
-  public static int boardWidth = 5;
+  int boardHeight = 5;
+  int boardWidth = 5;
 
   // TODO: remove this after ALPHA-version complete & before beta-version
   // HARDCODED FOR TESTING PURPOSES
   int[][] darkRoom = new int[boardHeight][boardWidth];
 
   // default GamePiece POSITIONS
-    public Map<String, Integer> doorPosition = new HashMap<>() {
+  public Map<String, Integer> doorPosition = new HashMap<>() {
     {
       put("row", 0);
       put("col", 0);
@@ -81,9 +81,9 @@ public class GameBoard {
       if ("player".equals(gamePiece)) {
         setPlayerPosition(row, col);
       }
-//      else if ("door".equals(gamePiece)) {
-//        setDoorPosition(row, col);
-//      }
+      else if ("door".equals(gamePiece)) {
+        setDoorPosition(row, col);
+      }
       else if ("boon".equals(gamePiece)) {
 //        setBoonPosition();
 //        totalBoonCheck();
@@ -161,8 +161,8 @@ public class GameBoard {
   }
   public int getBoonCount() { return boonCount; }
 
-  public static int getBoardHeight() { return boardHeight; }
-  public static int getBoardWidth() { return boardWidth; }
+  public int getBoardHeight() { return boardHeight; }
+  public int getBoardWidth() { return boardWidth; }
 
   // TODO: [STRETCH GOAL] implement a method which paints the board (aka darkRoom), taking args of playPosition, doorPosition, and boonPosition
   @Override
