@@ -5,17 +5,11 @@ public class Door {
   // PROPERTIES
   public boolean canBeAttempted = true;
 
-  static int spawnLocation (int maxPosition) {
-    return coinFlip() ? maxPosition : 0;
+  static int spawnLocation (int maxPosition) { return (Math.random() > 0.5) ? maxPosition : 0;
   }
 
   static boolean coinFlip() {
-    boolean result = false;
-    int randNum = (int) Math.floor(Math.random() * Math.random() * 100);
-    if (randNum % 2 == 0) {
-      result = true;
-    }
-    return result;
+    return (Math.random() > 0.5);
   }
 
   // ACCESSORS

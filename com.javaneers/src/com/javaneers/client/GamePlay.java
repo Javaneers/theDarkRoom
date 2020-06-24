@@ -28,15 +28,15 @@ public class GamePlay {
       rulesScreen.drawScreen();
     // GAMEPLAY == 2
     } else if (menuInput == 2){
-      GameBoard newGameBoard = new GameBoard();
-      newGameBoard.setupBoard();
+//      GameBoard newGameBoard = new GameBoard();
+//      newGameBoard.setupBoard();
 
-      System.out.println("newGameBoard.playerPosition: " + newGameBoard.playerPosition);
+//      System.out.println("newGameBoard.playerPosition: " + newGameBoard.playerPosition);
       PlayerSprite newPlayer = new PlayerSprite();
 
       // TODO: potentially call to 'GameLogic' class?
-      System.out.println("newGameBoard.playerPosition AFTER SETUP: " + newGameBoard.playerPosition);
-      newPlayer.movePlayer(newGameBoard);
+//      System.out.println("newGameBoard.playerPosition AFTER SETUP: " + newGameBoard.playerPosition);
+//      newPlayer.movePlayer(newGameBoard);
 
       // TODO: finish gameloop
 
