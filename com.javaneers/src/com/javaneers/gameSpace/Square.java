@@ -1,6 +1,6 @@
 package com.javaneers.gameSpace;
 
-public abstract class Square {
+public class Square {
 
   // PROPERTIES
   public boolean doorHere;
@@ -11,7 +11,7 @@ public abstract class Square {
   public Square() {
     // no-arg
   }
-  public Square(String token) {
+  public Square(String token) throws IllegalArgumentException {
     this();
     try {
       if ("door".equals(token)) {
@@ -49,5 +49,14 @@ public abstract class Square {
   }
   public void setBoonHere(boolean boonHere) {
     this.boonHere = boonHere;
+  }
+
+  // Override
+  public String toString() {
+    return getClass().getSimpleName() + ":" +
+      "\n doorHere=" + isDoorHere() +
+      "\n playerHere=" + isPlayerHere() +
+      "\n boonHere=" + isBoonHere() +
+      "";
   }
 }
