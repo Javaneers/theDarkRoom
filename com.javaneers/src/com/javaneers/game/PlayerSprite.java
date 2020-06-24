@@ -39,7 +39,6 @@ public class PlayerSprite {
       //System.out.println("To exit the game press 9");
 
       input = ReadPlayerInput.getInput();
-      System.out.println(input);
       // player choice is '1' --> UP
       if (input == 1 && currentRow != 0) {
         currentRow -= 1;
@@ -63,7 +62,6 @@ public class PlayerSprite {
         //player choice is '0' --> EXIT the GAME
       } else if (input == 0) {
         i = 1;
-        System.out.println("test input 0");
       }
       else {
         System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
