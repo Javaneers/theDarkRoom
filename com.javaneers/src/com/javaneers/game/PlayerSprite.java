@@ -1,6 +1,9 @@
 package com.javaneers.game;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayerSprite {
 
   private int moveCount = 5; //hardcoded here for now
@@ -30,7 +33,10 @@ public class PlayerSprite {
       System.out.println("    1. Move Up");
       System.out.println("    2. Move Right");
       System.out.println("    3. Move Down");
-      System.out.println("    4. Move Left \n\n");
+      System.out.println("    4. Move Left \n");
+      System.out.println("    0. Exit the Game \n\n");
+
+      //System.out.println("To exit the game press 9");
 
       input = ReadPlayerInput.getInput();
 
@@ -54,9 +60,13 @@ public class PlayerSprite {
         currentCol -= 1;
         System.out.println("You took one step left.");
 
-      }  else
-        System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
+      // player choice is '0' -->  EXIT the GAME
+      } else if (input == 0 ) {
+        i = 1;
 
+
+      } else
+        System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);
