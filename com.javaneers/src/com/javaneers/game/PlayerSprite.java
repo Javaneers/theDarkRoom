@@ -4,7 +4,7 @@ package com.javaneers.game;
 public class PlayerSprite {
 
   private int moveCount = 5; //hardcoded here for now
-  GameBoard board = new GameBoard();
+//  GameBoard board = new GameBoard();
 
   //ctors
   public PlayerSprite() {};
@@ -13,13 +13,17 @@ public class PlayerSprite {
   }
 
   //Business Methods
-  public void movePlayer() throws IllegalArgumentException {
-    int currentRow = board.getPlayerPosition("row");
-    int currentCol = board.getPlayerPosition("col");
+  public void movePlayer(GameBoard board) throws IllegalArgumentException {
+    int currentRow;
+    int currentCol;
     int input;
     int i = getMoveCount();
 
     while (i > 0) {
+
+       currentRow = board.getPlayerPosition("row");
+       currentCol = board.getPlayerPosition("col");
+
       System.out.println("----------------------------------------------------------");
       // Prompt player for move selection
       System.out.println("Please choose the direction you'd like to attempt to move: ");
