@@ -136,7 +136,7 @@ public class GameBoard {
         result = playerPosition.get("col");
       }
     } catch (Exception e) {
-      System.out.println("Error + " + result +
+      System.err.println(e + "Error + " + result +
         "'" + rowOrCol + "' is an invalid getRequest on playPosition." +
         "Please indicate 'row' or 'col'");
     }
