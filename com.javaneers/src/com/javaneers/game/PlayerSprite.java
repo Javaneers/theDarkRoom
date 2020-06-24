@@ -19,7 +19,6 @@ public class PlayerSprite {
     int input;
     int i = getMoveCount();
 
-    //move a Player on the GameBoard. Player's Input:  1 = up, 2 =  right, 3 = down, 4 = left
     while (i > 0) {
       System.out.println("----------------------------------------------------------");
       // Prompt player for move selection
