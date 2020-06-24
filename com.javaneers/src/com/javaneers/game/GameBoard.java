@@ -48,8 +48,6 @@ public class GameBoard {
   int boonCount = 3;
   boolean doorCanBeAttempted = true;
 
-  // TODO: potentially make these classes
-  // Door door = new Door();
   // Player player = new Player();
   // Boon boon = new Boon();
 
