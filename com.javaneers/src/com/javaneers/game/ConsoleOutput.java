@@ -4,7 +4,7 @@ package com.javaneers.game;
 public class ConsoleOutput {
   //PLAYER SPRITE
   //@beginning of playersprite while loop
-  void printMovePrompt() {
+  static void printMovePrompt() {
     System.out.println("Please choose the direction you'd like to attempt to move:" +
             "\t1. Move Up\n" +
             "\t2. Move Right\n" +
@@ -18,12 +18,19 @@ public class ConsoleOutput {
 
   //READSCREENSINPUT
   //line 16
-  //System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
-  // line 22
-  void printInputConfirmation(String result) {
-    System.out.println("user inputted " + result);
+  static void printMenuItemSelectionPrompt(){
+    System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
+  }// line 22
+  static void printInputConfirmation(int input) {
+    System.out.println("user inputted " + input);
   }
-
+  static void printNotMappedMenuItem(int input) {
+    System.out.println(input + " is not mapped to a Menu Item\n");
+  }
+  static void printNotANumber(String input){
+    System.out.println(input + " is not a valid NUMBER\n");
+  }
+  
   //SCREENS
 
 
