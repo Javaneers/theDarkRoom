@@ -19,6 +19,7 @@ public class PlayerSprite {
     int input;
     int i = getMoveCount();
 
+    //move a Player on the GameBoard. Player's Input:  1 = up, 2 =  right, 3 = down, 4 = left
     while (i > 0) {
       input = ReadPlayerInput.getInput();
       if (input == 2 && currentCol != board.getBoardWidth()) {
@@ -42,6 +43,10 @@ public class PlayerSprite {
       System.out.println("Moves left: " + getMoveCount()); //might be not needed inside movePlayer()
      }
     }
+    //check currentPosition if the Player reached the Door or a Boon
+
+
+
 
     //getters and setters
     public int getMoveCount() { return moveCount; }
