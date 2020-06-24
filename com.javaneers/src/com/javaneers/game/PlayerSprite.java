@@ -21,6 +21,14 @@ public class PlayerSprite {
 
     //move a Player on the GameBoard. Player's Input:  1 = up, 2 =  right, 3 = down, 4 = left
     while (i > 0) {
+
+      // Prompt player for move selection
+      System.out.println("Please choose the direction you'd like to attempt to move: ");
+      System.out.println("    1. Move Up");
+      System.out.println("    2. Move Right");
+      System.out.println("    3. Move Down");
+      System.out.println("    4. Move Left \n");
+
       input = ReadPlayerInput.getInput();
       if (input == 2 && currentCol != board.getBoardWidth()) {
         currentCol += 1;
@@ -36,7 +44,7 @@ public class PlayerSprite {
         System.out.println("You took one step down.");
 
       } else
-        throw new IllegalArgumentException("You hit a wall, try other direction");
+        System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);

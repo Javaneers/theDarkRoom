@@ -72,7 +72,7 @@ public class GameBoard {
     // TODO: decide if this method generates a board on this line or if gameplay generates a 'new' board
     updateBoard("player", randomInt(0, boardHeight - 1), randomInt(0, boardWidth - 1));
     updateBoard("door", randomInt(0, 1), randomInt(0, 1));
-    System.out.println("TheDarkRoom is ready...");
+    System.out.println("Your Dark Room awaits..");
   }
 
 
@@ -81,9 +81,9 @@ public class GameBoard {
       if ("player".equals(gamePiece)) {
         setPlayerPosition(row, col);
       }
-      else if ("door".equals(gamePiece)) {
-        setDoorPosition(row, col);
-      }
+//      else if ("door".equals(gamePiece)) {
+//        setDoorPosition(row, col);
+//      }
       else if ("boon".equals(gamePiece)) {
 //        setBoonPosition();
 //        totalBoonCheck();
