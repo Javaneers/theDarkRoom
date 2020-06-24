@@ -11,7 +11,32 @@ public class ConsoleOutput {
             "\t3. Move Down\n" +
             "\t4. Move Left \n");
   }
-
+  static void printMovedUp(){
+    System.out.println("You took one step up.");
+  }
+  static void printMovedRight(){
+    System.out.println("You took one step right.");
+  }
+  static void printMovedDown(){
+    System.out.println("You took one step down.");
+  }
+  static void printMovedLeft(){
+    System.out.println("You took one step left.");
+  }
+  static void printCannotMove(int moveCount){
+    if (moveCount==1){
+      System.out.println("This may be your final regret...");
+    }
+    else if (moveCount == 2){
+      System.out.println("Now is not the time to run into things!!! ");
+    }
+    else {
+      System.out.println("Ouch! You slammed headfirst into something. Guess you can't go that way...");
+    }
+  }
+  static void printMoveCount(int moveCount){
+    System.out.println("Moves remaining: " + moveCount);
+  }
   //GAMEBOARD
 
   //READPLAYERINPUT
