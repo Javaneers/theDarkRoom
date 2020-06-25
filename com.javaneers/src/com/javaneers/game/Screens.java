@@ -76,7 +76,12 @@ public class Screens {
       else {
         expectedInput = 0;
       }
-      menu.append(" " + menuOptions.get(i) + ": " + expectedInput + " ");
+      if (menuOptions.size() > 1) {
+        menu.append(" " + menuOptions.get(i) + ": " + expectedInput + " ");
+      }
+      else {
+        menu.append(menuOptions.get(i));
+      }
     }
     //Math used for centering Menu Items below Header
     int whitespaces = Math.round( ((((headerText.length() + 2) * 8) - menu.length()) / 2) );

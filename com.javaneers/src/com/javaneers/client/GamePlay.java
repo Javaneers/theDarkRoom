@@ -18,6 +18,7 @@ public class GamePlay {
     // Start App with a Menu Screen and prompt user for input
     int menuInput = ReadScreensInput.getInput();
     System.out.println(menuInput);
+    ConsoleOutput.roomAnalysis();
 
     // Interpret user input and use it to manage Screens navigation
     // Go to Rules Screen
@@ -26,14 +27,16 @@ public class GamePlay {
       menuInput = ReadScreensInput.getInput();
     }
 
-    if (menuInput == 1) {
-      Screens rulesScreen = new Screens("Game Rules", "GameRules", new ArrayList<String>(List.of("Main Menu", "exit")));
+    while (menuInput == 1) {
+      Screens rulesScreen = new Screens("Game Rules", "GameRules", new ArrayList<String>(List.of("Rules", "Start", "exit")));
       rulesScreen.drawScreen();
+      menuInput = ReadScreensInput.getInput();
+    }
 
     // Go to Game Board environment
-    } else if (menuInput == 2){
+    if (menuInput == 2){
       // Setup game space
-      PlayerSprite player = new PlayerSprite(5);
+      PlayerSprite player = new PlayerSprite(7);
       Square[][] gameBoard = SquareFactory.createBoard(player);
 
       // Game Engine

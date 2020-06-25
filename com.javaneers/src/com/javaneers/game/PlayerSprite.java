@@ -24,7 +24,7 @@ public class PlayerSprite {
     int i = getMoveCount();
 
       // Use this visualization when cheating
-      System.out.println("----------------------------------------------------------");
+      System.out.println("\n----------------------------------------------------------");
       if (GamePlay.getCheatCode()) {
         System.out.println(SquareFactory.paintBoard(board));
       }

@@ -15,6 +15,11 @@ public class SquareFactory {
     return randInt.nextInt(board.length-2) + 1;
   }
 
+  public static int boonSpawn(Square[][] board) {
+    Random randInt = new Random();
+    return randInt.nextInt(board.length);
+  }
+
   static Square createSquare() {
     return new Square();
   }
@@ -35,8 +40,12 @@ public class SquareFactory {
     player.setCurrentPlayerRow(pRow);
     player.setCurrentPlayerCol(pCol);
 
-    board[0][4].setBoonHere(true);
-    board[4][0].setBoonHere(true);
+    int bRow1 = boonSpawn(board);
+    int bCol1 = boonSpawn(board);
+    int bRow2 = boonSpawn(board);
+    int bCol2 = boonSpawn(board);
+    board[bRow1][bRow1].setBoonHere(true);
+    board[bRow2][bCol2].setBoonHere(true);
     return board;
   }
 
@@ -47,13 +56,13 @@ public class SquareFactory {
       for (int i = 0; i < row.length; i++) {
         result.append("|");
         if (row[i].isDoorHere()) {
-          result.append(" D ");
+          result.append(" \uD83D\uDEAA ");
         }
         else if (row[i].isPlayerHere()) {
           result.append("👻 ");
         }
         else if (row[i].isBoonHere()) {
-          result.append(" B ");
+          result.append(" \uD83C\uDF81 ");
         }
         else {
           result.append("   ");
