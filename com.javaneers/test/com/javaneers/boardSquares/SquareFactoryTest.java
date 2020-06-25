@@ -19,8 +19,27 @@ public class SquareFactoryTest {
   }
   //player spawn cannot be greater than 4 or less than zero
   @Test
-  public void playerSpawnTest_shouldReturnValueBetweenZeroAndFour(){
+  public void playerSpawnTest_shouldReturnValueBetweenOneAndThreer(){
     int result = SquareFactory.playerSpawn(gameBoard);
+    assertTrue(result <= 3);
+    assertTrue(result >= 1);
+
+    result = SquareFactory.playerSpawn(gameBoard);
+    assertTrue(result <= 3);
+    assertTrue(result >= 1);
+
+    result = SquareFactory.playerSpawn(gameBoard);
+    assertTrue(result <= 3);
+    assertTrue(result >= 1);
+
+    result = SquareFactory.playerSpawn(gameBoard);
+    assertTrue(result <= 3);
+    assertTrue(result >= 1);
+  }
+
+  @Test
+  public void doorSpawnTest_shouldReturnValueBetweenZeroAndFour() {
+    int result = SquareFactory.doorSpawn(gameBoard);
     assertTrue(result <= 4);
     assertTrue(result >= 0);
 
