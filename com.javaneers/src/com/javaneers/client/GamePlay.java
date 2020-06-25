@@ -37,14 +37,15 @@ public class GamePlay {
       Square[][] gameBoard = SquareFactory.createBoard(player);
 
       // player move
-      while (player.getHasWon() == false || player.getHasLost() == false) {
+      do {
         player.movePlayer(gameBoard);
-      }
+      } while (player.getHasWon() == false && player.getHasLost() == false);
+
       if (player.getHasWon()) {
         Screens winScreen = new Screens("You Won","YouWon",new ArrayList<String>(List.of("Play Again","exit")));
         winScreen.drawScreen();
       }
-      if (player.getHasLost())  {
+      else if (player.getHasLost())  {
         Screens gameOverScreen = new Screens("Game Over","GameOver",new ArrayList<String>(List.of("Play Again","exit")));
         gameOverScreen.drawScreen();
 //        Execute.main(new String[1]);

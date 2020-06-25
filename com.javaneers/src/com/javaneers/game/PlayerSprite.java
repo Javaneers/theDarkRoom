@@ -33,7 +33,6 @@ public class PlayerSprite {
     int input;
     int i = getMoveCount();
 
-    while (i > 0) {
       System.out.println("----------------------------------------------------------");
       System.out.println(SquareFactory.paintBoard(board));
       // Prompt player for move selection
@@ -76,13 +75,10 @@ public class PlayerSprite {
       board[currentPlayerRow][currentPlayerCol].setPlayerHere(true);
 
       resolvePlayerActions(board);
-      if (getHasWon()) break;
       ConsoleOutput.printMoveCount(getMoveCount());
       if (getMoveCount() == 0) {
         setHasLost(true);
-        break;
       }
-     }
     }
 
 
@@ -93,7 +89,8 @@ public class PlayerSprite {
         setHasWon(true);
       }
       else if (x.isBoonHere()) {
-        setMoveCount(5);
+        x.setBoonHere(false);
+        setMoveCount(getMoveCount() + 5);
 //    //If position contains door, attempt to open i
       }
 //
