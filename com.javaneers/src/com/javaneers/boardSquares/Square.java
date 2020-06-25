@@ -1,4 +1,4 @@
-package com.javaneers.gameSpace;
+package com.javaneers.boardSquares;
 
 public class Square {
 
