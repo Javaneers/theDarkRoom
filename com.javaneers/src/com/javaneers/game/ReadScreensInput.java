@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ReadScreensInput {
   // Restrict and reserve inputs for menu options
-  private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,0));
+  private static final ArrayList<Integer> allowableInputs = new ArrayList<>(List.of(1,2,8,0));
 
 
 

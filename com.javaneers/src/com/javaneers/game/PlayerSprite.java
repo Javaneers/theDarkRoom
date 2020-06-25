@@ -3,13 +3,14 @@ package com.javaneers.game;
 
 import com.javaneers.boardSquares.Square;
 import com.javaneers.boardSquares.SquareFactory;
+import com.javaneers.client.GamePlay;
 
 public class PlayerSprite {
   public boolean hasWon = false;
   public boolean hasLost = false;
   public int currentPlayerRow;
   public int currentPlayerCol;
-  private int moveCount = 7; //hardcoded here for now
+  private int moveCount = 7;
 
   //CTORS
   public PlayerSprite() {};
@@ -24,7 +25,9 @@ public class PlayerSprite {
 
       // Use this visualization when cheating
       System.out.println("----------------------------------------------------------");
-      System.out.println(SquareFactory.paintBoard(board));
+      if (GamePlay.getCheatCode()) {
+        System.out.println(SquareFactory.paintBoard(board));
+      }
 
       // Prompt player for move selection
       ConsoleOutput.printMoveSelectionsPrompt();

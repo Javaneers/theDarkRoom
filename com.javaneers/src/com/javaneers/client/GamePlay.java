@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GamePlay {
+  private static boolean cheatCode = false;
 
   public static void start() {
 
@@ -20,6 +21,11 @@ public class GamePlay {
 
     // Interpret user input and use it to manage Screens navigation
     // Go to Rules Screen
+    if (menuInput == 8) {
+      setCheatCode(true);
+      menuInput = ReadScreensInput.getInput();
+    }
+
     if (menuInput == 1) {
       Screens rulesScreen = new Screens("Game Rules", "GameRules", new ArrayList<String>(List.of("Main Menu", "exit")));
       rulesScreen.drawScreen();
@@ -49,6 +55,14 @@ public class GamePlay {
         ConsoleOutput.printExitMessage();
     }
 
+  }
+
+  // ACCESSOR METHODS
+  public static boolean getCheatCode() {
+    return cheatCode;
+  }
+  private static void setCheatCode(boolean isCheating) {
+    cheatCode = isCheating;
   }
 
 }
