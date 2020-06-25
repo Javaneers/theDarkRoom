@@ -2,6 +2,8 @@ package com.javaneers.game;
 
 
 import com.javaneers.boardSquares.Square;
+import com.javaneers.boardSquares.SquareFactory;
+import com.javaneers.client.GamePlay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +21,19 @@ public class PlayerSprite {
   }
 
   //Business Methods
+//  public void startTurn() {
+//    while (moveCount > 0) {
+//      movePlayer();
+//    }
+//  }
+
   public void movePlayer(Square[][] board) throws IllegalArgumentException {
     int input;
     int i = getMoveCount();
 
     while (i > 0) {
-
       System.out.println("----------------------------------------------------------");
+      System.out.println(SquareFactory.paintBoard(board));
       // Prompt player for move selection
       ConsoleOutput.printMoveSelectionsPrompt();
 

@@ -1,5 +1,7 @@
 package com.javaneers.client;
 
+import com.javaneers.boardSquares.Square;
+import com.javaneers.boardSquares.SquareFactory;
 import com.javaneers.game.*;
 
 import java.io.BufferedReader;
@@ -14,30 +16,28 @@ import java.util.stream.Stream;
 
 public class GamePlay {
 
-  public static void main(String[] args) {
-    //
+  public static void start() {
+
     Screens titleScreen = new Screens("Dark Room","DarkRoomTitle",new ArrayList<String>(List.of("Rules","Start","exit")));
     titleScreen.drawScreen();
+
     //prompt user for input
     int menuInput = ReadScreensInput.getInput();
     System.out.println(menuInput);
+
     // RULES == 1
     if (menuInput == 1) {
       Screens rulesScreen = new Screens("Game Rules", "GameRules", new ArrayList<String>(List.of("Main Menu", "exit")));
       rulesScreen.drawScreen();
+
     // GAMEPLAY == 2
     } else if (menuInput == 2){
-//      GameBoard newGameBoard = new GameBoard();
-//      newGameBoard.setupBoard();
+      // setup game space
+      PlayerSprite player = new PlayerSprite(5);
+      Square[][] gameBoard = SquareFactory.createBoard(player);
 
-//      System.out.println("newGameBoard.playerPosition: " + newGameBoard.playerPosition);
-      PlayerSprite newPlayer = new PlayerSprite();
-
-      // TODO: potentially call to 'GameLogic' class?
-//      System.out.println("newGameBoard.playerPosition AFTER SETUP: " + newGameBoard.playerPosition);
-//      newPlayer.movePlayer(newGameBoard);
-
-      // TODO: finish gameloop
+      // player move
+      player.movePlayer(gameBoard);
 
     // EXIT == 0
     } else if (menuInput == 0) {
