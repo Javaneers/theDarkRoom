@@ -2,7 +2,6 @@ package com.javaneers.game;
 
 import  java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 //This class will be used by Screens to print a header
 public class AlphaHeader {

@@ -2,7 +2,17 @@ package com.javaneers.game;
 
 //This class contains methods for printing to the console
 public class ConsoleOutput {
-  //PLAYER_SPRITE
+
+  // GAME_PLAY
+  public static void printExitMessage() {
+    System.out.println("Thank you for playing 'The Dark Room' by the Javaneers! " +
+            "\n\t Maya Marks, Michael Vance, Matthew Beckerleg" +
+            "\n\t 👻..........................................." +
+            "\n"
+            );
+  }
+
+  // PLAYER_SPRITE
   static void printMoveSelectionsPrompt() {
     System.out.println("Please choose the direction you'd like to attempt to move: \n" +
             "\t1. Move Up\n" +
@@ -23,37 +33,29 @@ public class ConsoleOutput {
   static void printMovedLeft(){
     System.out.println("You took one step left.");
   }
-  static void printCannotMove(int moveCount){
-    if (moveCount==1){
+  static void printCannotMove(int moveCount) {
+    if (moveCount == 1) {
       System.out.println("This may be your final regret...");
     }
-    else if (moveCount == 2){
+    else if (moveCount == 2) {
       System.out.println("Now is not the time to run into things!!! ");
     }
     else {
       System.out.println("Ouch! You slammed headfirst into something. Guess you can't go that way...");
     }
   }
-  static void printMoveCount(int moveCount){
+  static void printMoveCount(int moveCount) {
     System.out.println("Moves remaining: " + moveCount);
   }
-  //GAME_BOARD
-  static void printSetupBoardCompleted(){
-    System.out.println("Your DarkRoom awaits..");
-  }
-  static void printGamePiecePosition(String gamePiece, int row, int col){
-    System.out.println("Updating " + gamePiece +
-            " position to row: " + row + ", col: " + col);
-  }
 
-  //READ_PLAYER_INPUT/READ_SCREENS_INPUT
-  static void printPlayerMoveSubmissionPrompt(){
+  // READ_PLAYER_INPUT/READ_SCREENS_INPUT
+  static void printPlayerMoveSubmissionPrompt() {
     System.out.println("Type 1-4 into console then press enter to move your player");
   }
   static void printNumberOutOfRange(int input){
     System.out.println(input + " is a number out of range\n");
   }
-  static void printMenuItemSelectionPrompt(){
+  static void printMenuItemSelectionPrompt() {
     System.out.println("Type the Number Corresponding to Your Selection, Then Press Enter");
   }
   static void printInputConfirmation(int input) {
@@ -66,7 +68,11 @@ public class ConsoleOutput {
     System.out.println(input + " is not a valid NUMBER\n");
   }
 
-  //SCREENS
+  // SCREENS
 
+  // SQUARE_FACTORY
+  public static void printBoardLegend() {
+    System.out.println("Board Legend: \n 👻 = player \n B = boon \n D = door");
+  }
 
 }

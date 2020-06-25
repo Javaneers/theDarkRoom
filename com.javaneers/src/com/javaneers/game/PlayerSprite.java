@@ -11,47 +11,48 @@ public class PlayerSprite {
   public int currentPlayerCol;
   private int moveCount = 7; //hardcoded here for now
 
-  //ctors
+  //CTORS
   public PlayerSprite() {};
   public PlayerSprite(int moveCount) {
     this.moveCount = moveCount;
   }
 
-  //Business Methods
+  //BUSINESS METHODS
   public void movePlayer(Square[][] board) {
     int input;
     int i = getMoveCount();
 
+      // Use this visualization when cheating
       System.out.println("----------------------------------------------------------");
       System.out.println(SquareFactory.paintBoard(board));
+
       // Prompt player for move selection
       ConsoleOutput.printMoveSelectionsPrompt();
 
-      //System.out.println("To exit the game press 9");
-
       input = ReadPlayerInput.getInput();
       board[currentPlayerRow][currentPlayerCol].setPlayerHere(false);
+
       // player choice is '1' --> UP
       if (input == 1 && currentPlayerRow != 0) {
         currentPlayerRow -= 1;
         ConsoleOutput.printMovedUp();
 
-        // player choice is '2' --> RIGHT
+      // player choice is '2' --> RIGHT
       } else if (input == 2 && currentPlayerCol != 5 - 1) {
         currentPlayerCol += 1;
         ConsoleOutput.printMovedRight();
 
-        // player choice is '3' --> DOWN
+      // player choice is '3' --> DOWN
       } else if (input == 3 && currentPlayerRow != 5 - 1) {
         currentPlayerRow += 1;
         ConsoleOutput.printMovedDown();
 
-        // player choice is '4' --> LEFT
+      // player choice is '4' --> LEFT
       } else if (input == 4 && currentPlayerCol != 0) {
         currentPlayerCol -= 1;
         ConsoleOutput.printMovedLeft();
 
-        //player choice is '0' --> EXIT the GAME
+      // player choice is '0' --> EXIT the GAME
       } else if (input == 0) {
         i = 1;
       }
@@ -60,9 +61,9 @@ public class PlayerSprite {
       }
       i -= 1;
       setMoveCount(i);
-//      board.updateBoard("player", currentPlayerRow, currentPlayerCol);
       board[currentPlayerRow][currentPlayerCol].setPlayerHere(true);
 
+      // Begin Resolution Phase of Player's Turn
       resolvePlayerActions(board);
       ConsoleOutput.printMoveCount(getMoveCount());
       if (getMoveCount() == 0) {
@@ -70,56 +71,47 @@ public class PlayerSprite {
       }
     }
 
-
     private void resolvePlayerActions(Square[][] board) {
       var x = board[currentPlayerRow][currentPlayerCol];
-//    //Check if there is a door or boon at player's position
+      // Check if there is a door or boon at player's position
       if (x.isDoorHere()) {
         setHasWon(true);
       }
       else if (x.isBoonHere()) {
         x.setBoonHere(false);
         setMoveCount(getMoveCount() + 5);
-//    //If position contains door, attempt to open i
       }
-//
-//    //If position contains boon, print a message and setMoveCount(5);
-//
     }
 
-
-
-    //getters and setters
+    // GETTERS AND SETTERS
     public int getMoveCount() { return moveCount; }
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
 
-
+    public int getCurrentPlayerRow() { return this.currentPlayerRow; }
     public void setCurrentPlayerRow(int row) {
       currentPlayerRow = row;
     }
-    public int getCurrentPlayerRow() { return this.currentPlayerRow; }
+
+    public int getCurrentPlayerCol() { return this.currentPlayerCol; }
     public void setCurrentPlayerCol(int col) {
       currentPlayerCol = col;
     }
-    public int getCurrentPlayerCol() { return this.currentPlayerCol; }
 
-  public boolean getHasWon() {
-    return hasWon;
-  }
-  public void setHasWon(boolean hasWon) {
-    this.hasWon = hasWon;
-  }
+    public boolean getHasWon() {
+      return hasWon;
+    }
+    public void setHasWon(boolean hasWon) {
+      this.hasWon = hasWon;
+    }
 
-  public boolean getHasLost() {
-    return hasLost;
-  }
-  public void setHasLost(boolean hasLost) {
-    this.hasLost = hasLost;
-  }
+    public boolean getHasLost() {
+      return hasLost;
+    }
+    public void setHasLost(boolean hasLost) {
+      this.hasLost = hasLost;
+    }
 
-  @Override
-  public String toString() { return getClass().getSimpleName() + " Moves left:" + getMoveCount();}
+    @Override
+    public String toString() { return getClass().getSimpleName() + " Moves left:" + getMoveCount(); }
 
-
-  }
-
+}

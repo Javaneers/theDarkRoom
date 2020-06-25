@@ -1,7 +1,7 @@
 package com.javaneers.boardSquares;
 
+import com.javaneers.game.ConsoleOutput;
 import com.javaneers.game.PlayerSprite;
-
 import java.util.Random;
 
 public class SquareFactory {
@@ -41,7 +41,7 @@ public class SquareFactory {
   }
 
   public static StringBuilder paintBoard(Square[][] currentBoard) {
-//    System.out.println("Board Legend: \n 👻 = player \n B = boon \n D = door");
+    ConsoleOutput.printBoardLegend();
     StringBuilder result = new StringBuilder("Current board: \n ").append("----+---+---+---+---\n");
     for (Square[] row : currentBoard) {
       for (int i = 0; i < row.length; i++) {
@@ -51,9 +51,6 @@ public class SquareFactory {
         }
         else if (row[i].isPlayerHere()) {
           result.append("👻 ");
-//          result.append(" \uD83D\uDE00 ");  // smile
-//          result.append(" ").append(Character.toChars(0x1F349)).append(" ");
-//          \xF0\x9F\x9A\xBA = "women's symbol"
         }
         else if (row[i].isBoonHere()) {
           result.append(" B ");

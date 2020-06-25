@@ -51,7 +51,8 @@ public class Square {
     this.boonHere = boonHere;
   }
 
-  // Override
+  // OVERRIDE
+  @Override
   public String toString() {
     return getClass().getSimpleName() + ":" +
       "\n doorHere=" + isDoorHere() +
