@@ -12,7 +12,6 @@ import java.util.List;
 import java.io.IOException;
 import java.util.stream.Stream;
 
-// this will contain the loading, turn, and credit method calls
 public class GamePlay {
 
   public static void main(String[] args) {
@@ -45,11 +44,6 @@ public class GamePlay {
 
     }
 
-
-//    GameBoard board1 = new GameBoard(5,5);
-    //GameBoard might initialize player eventually, doing that manually in the client for now
-//    PlayerSprite player1 = new PlayerSprite();
-    //player1.movePlayer();
     Screens winScreen = new Screens("You Won","YouWon",new ArrayList<String>(List.of("Play Again","exit")));
     winScreen.drawScreen();
     Screens gameOverScreen = new Screens("Game Over","GameOver",new ArrayList<String>(List.of("Play Again","exit")));
