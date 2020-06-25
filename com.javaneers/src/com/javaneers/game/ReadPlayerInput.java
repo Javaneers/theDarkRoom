@@ -1,5 +1,6 @@
 package com.javaneers.game;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,23 +15,23 @@ public class ReadPlayerInput {
     //Forced to initialize result variable because compiler didn't think recursion would resolve null values
     //int result = 0;
     Scanner inputMonitor = new Scanner(System.in);
-    System.out.println("Type 1-4 into console then press enter to move your player");
+    ConsoleOutput.printPlayerMoveSubmissionPrompt();
 
     //Check input from console (System.in)
     if (inputMonitor.hasNextInt()) {
       result = inputMonitor.nextInt();
       if (allowableInputs.contains(result)) {
-        System.out.println("user inputted " + result);
+        ConsoleOutput.printInputConfirmation(result);
       }
       else {
-        System.out.println(result + " is a number out of range\n");
+        ConsoleOutput.printNumberOutOfRange(result);
         getInput();
       }
 
     }
     else {
       String invalidType = inputMonitor.next();
-      System.out.println(invalidType + " is not a valid number\n");
+      ConsoleOutput.printNotANumber(invalidType);
       getInput();
     }
     return result;
