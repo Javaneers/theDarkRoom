@@ -33,9 +33,28 @@ public class SquareFactory {
   }
 
   public static StringBuilder paintBoard(Square[][] currentBoard) {
-    StringBuilder result = new StringBuilder("Current board: \n");
+    System.out.println("Board Legend: \n x = player \n B = boon \n O = door");
+    StringBuilder result = new StringBuilder("Current board: \n ").append("----+---+---+---+---\n");
     for (Square[] row : currentBoard) {
-      result.append(Arrays.toString(row)).append("\n\n");
+      for (int i = 0; i < row.length; i++) {
+        result.append("|");
+        if (row[i].isDoorHere()) {
+          result.append(" D ");
+        }
+        else if (row[i].isPlayerHere()) {
+          result.append("👻 ");
+//          result.append(" \uD83D\uDE00 ");  // smile
+//          result.append(" ").append(Character.toChars(0x1F349)).append(" ");
+//          \xF0\x9F\x9A\xBA = "women's symbol"
+        }
+        else if (row[i].isBoonHere()) {
+          result.append(" B ");
+        }
+        else {
+          result.append("   ");
+        }
+      }
+      result.append("|\n----+---+---+---+----\n");
     }
     return result;
   }
