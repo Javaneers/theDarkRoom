@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerSprite {
+  public boolean hasWon = false;
+  public boolean hasLost = false;
   public int currentPlayerRow;
   public int currentPlayerCol;
   private int moveCount = 5; //hardcoded here for now
@@ -73,22 +75,31 @@ public class PlayerSprite {
 //      board.updateBoard("player", currentPlayerRow, currentPlayerCol);
       board[currentPlayerRow][currentPlayerCol].setPlayerHere(true);
 
-//      TODO: revise method call if necessary and uncomment it when method is written to resolve action phase for player turn
-//      resolvePlayerActions();
+      resolvePlayerActions(board);
+      if (getHasWon()) break;
       ConsoleOutput.printMoveCount(getMoveCount());
+      if (getMoveCount() == 0) {
+        setHasLost(true);
+        break;
+      }
      }
     }
 
 
-//    TODO: Finish writing this method to resolve action phase of player's turn
-//    private void resolvePlayerActions() {
+    private void resolvePlayerActions(Square[][] board) {
+      var x = board[currentPlayerRow][currentPlayerCol];
 //    //Check if there is a door or boon at player's position
-//
-//    //If position contains door, attempt to open it
+      if (x.isDoorHere()) {
+        setHasWon(true);
+      }
+      else if (x.isBoonHere()) {
+        setMoveCount(5);
+//    //If position contains door, attempt to open i
+      }
 //
 //    //If position contains boon, print a message and setMoveCount(5);
 //
-//    }
+    }
 
 
 
@@ -106,6 +117,19 @@ public class PlayerSprite {
     }
     public int getCurrentPlayerCol() { return this.currentPlayerCol; }
 
+  public boolean getHasWon() {
+    return hasWon;
+  }
+  public void setHasWon(boolean hasWon) {
+    this.hasWon = hasWon;
+  }
+
+  public boolean getHasLost() {
+    return hasLost;
+  }
+  public void setHasLost(boolean hasLost) {
+    this.hasLost = hasLost;
+  }
 
   @Override
   public String toString() { return getClass().getSimpleName() + " Moves left:" + getMoveCount();}
