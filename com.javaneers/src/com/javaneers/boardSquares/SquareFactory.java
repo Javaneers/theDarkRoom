@@ -1,13 +1,23 @@
 package com.javaneers.boardSquares;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class SquareFactory {
 
+  public static int doorSpawn(Square[][] board) {
+    return (Math.random() > 0.5) ? (board.length-1) : 0;
+  }
+
+  public static int playerSpawn(Square[][] board) {
+//    return (board.length-1) - (int)Math.round((Math.random()))*(board.length-1);
+    Random randInt = new Random();
+//    return (int) Math.floor((Math.random() * (board.length - 1 + 1) + 1));
+    return randInt.nextInt(board.length-2) + 1;
+  }
+
   public static void main(String[] args) {
     Square[][] testBoard = createBoard();
-//    System.out.println(createBoard());
-//    System.out.println(testBoard[2][2]);
     System.out.println(paintBoard(testBoard));
   }
 
@@ -22,11 +32,9 @@ public class SquareFactory {
         row[i] = createSquare();
       }
     }
-//  spawnDoor();
-    board[4][3].setDoorHere(true);
-//  spawnPlayer();
-    board[2][2].setPlayerHere(true);
-//  spawnBoons();
+    // place tokens
+    board[doorSpawn(board)][doorSpawn(board)].setDoorHere(true);
+    board[playerSpawn(board)][playerSpawn(board)].setPlayerHere(true);
     board[0][4].setBoonHere(true);
     board[4][0].setBoonHere(true);
     return board;
