@@ -4,11 +4,12 @@ package com.javaneers.game;
 public class ConsoleOutput {
   //PLAYER_SPRITE
   static void printMoveSelectionsPrompt() {
-    System.out.println("Please choose the direction you'd like to attempt to move:" +
+    System.out.println("Please choose the direction you'd like to attempt to move: \n" +
             "\t1. Move Up\n" +
             "\t2. Move Right\n" +
             "\t3. Move Down\n" +
-            "\t4. Move Left \n");
+            "\t4. Move Left \n" +
+            "\t0. I'm a Loser, Exit Game");
   }
   static void printMovedUp(){
     System.out.println("You took one step up.");

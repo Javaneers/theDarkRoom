@@ -3,18 +3,13 @@ package com.javaneers.game;
 
 import com.javaneers.boardSquares.Square;
 import com.javaneers.boardSquares.SquareFactory;
-import com.javaneers.client.GamePlay;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerSprite {
   public boolean hasWon = false;
   public boolean hasLost = false;
   public int currentPlayerRow;
   public int currentPlayerCol;
-  private int moveCount = 5; //hardcoded here for now
-//  GameBoard board = new GameBoard();
+  private int moveCount = 7; //hardcoded here for now
 
   //ctors
   public PlayerSprite() {};
@@ -23,13 +18,7 @@ public class PlayerSprite {
   }
 
   //Business Methods
-//  public void startTurn() {
-//    while (moveCount > 0) {
-//      movePlayer();
-//    }
-//  }
-
-  public void movePlayer(Square[][] board) throws IllegalArgumentException {
+  public void movePlayer(Square[][] board) {
     int input;
     int i = getMoveCount();
 
