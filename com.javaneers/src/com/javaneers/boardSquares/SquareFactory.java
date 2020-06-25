@@ -15,17 +15,9 @@ public class SquareFactory {
     return randInt.nextInt(board.length-2) + 1;
   }
 
-  public static void main(String[] args) {
-    PlayerSprite experimentalPlayer = new PlayerSprite();
-    Square[][] testBoard = createBoard(experimentalPlayer);
-    System.out.println(paintBoard(testBoard));
-  }
-
   static Square createSquare() {
     return new Square();
   }
-
-
 
   static Square[][] createBoard(PlayerSprite player) {
     Square[][] board = new Square[5][5];
@@ -47,8 +39,6 @@ public class SquareFactory {
     board[4][0].setBoonHere(true);
     return board;
   }
-
-
 
   public static StringBuilder paintBoard(Square[][] currentBoard) {
     System.out.println("Board Legend: \n 👻 = player \n B = boon \n D = door");
