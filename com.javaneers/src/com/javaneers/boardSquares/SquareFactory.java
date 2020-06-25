@@ -33,7 +33,7 @@ public class SquareFactory {
   }
 
   public static StringBuilder paintBoard(Square[][] currentBoard) {
-    System.out.println("Board Legend: \n x = player \n B = boon \n O = door");
+    System.out.println("Board Legend: \n 👻 = player \n B = boon \n D = door");
     StringBuilder result = new StringBuilder("Current board: \n ").append("----+---+---+---+---\n");
     for (Square[] row : currentBoard) {
       for (int i = 0; i < row.length; i++) {
