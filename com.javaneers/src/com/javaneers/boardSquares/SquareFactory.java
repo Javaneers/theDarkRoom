@@ -1,5 +1,7 @@
 package com.javaneers.boardSquares;
 
+import com.javaneers.game.PlayerSprite;
+
 import java.util.Random;
 
 public class SquareFactory {
@@ -14,7 +16,8 @@ public class SquareFactory {
   }
 
   public static void main(String[] args) {
-    Square[][] testBoard = createBoard();
+    PlayerSprite experimentalPlayer = new PlayerSprite();
+    Square[][] testBoard = createBoard(experimentalPlayer);
     System.out.println(paintBoard(testBoard));
   }
 
@@ -22,7 +25,9 @@ public class SquareFactory {
     return new Square();
   }
 
-  static Square[][] createBoard() {
+
+
+  static Square[][] createBoard(PlayerSprite player) {
     Square[][] board = new Square[5][5];
     for (Square[] row : board) {
       for (int i = 0; i < row.length; i++) {
@@ -31,11 +36,19 @@ public class SquareFactory {
     }
     // place tokens
     board[doorSpawn(board)][doorSpawn(board)].setDoorHere(true);
-    board[playerSpawn(board)][playerSpawn(board)].setPlayerHere(true);
+
+    int pRow = playerSpawn(board);
+    int pCol = playerSpawn(board);
+    board[pRow][pCol].setPlayerHere(true);
+    player.setCurrentPlayerRow(pRow);
+    player.setCurrentPlayerCol(pCol);
+
     board[0][4].setBoonHere(true);
     board[4][0].setBoonHere(true);
     return board;
   }
+
+
 
   public static StringBuilder paintBoard(Square[][] currentBoard) {
     System.out.println("Board Legend: \n 👻 = player \n B = boon \n D = door");

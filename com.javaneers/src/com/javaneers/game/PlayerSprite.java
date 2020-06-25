@@ -1,11 +1,14 @@
 package com.javaneers.game;
 
 
+import com.javaneers.boardSquares.Square;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerSprite {
-
+  public int currentPlayerRow;
+  public int currentPlayerCol;
   private int moveCount = 5; //hardcoded here for now
 //  GameBoard board = new GameBoard();
 
@@ -16,16 +19,11 @@ public class PlayerSprite {
   }
 
   //Business Methods
-  public void movePlayer(GameBoard board) throws IllegalArgumentException {
-    int currentRow;
-    int currentCol;
+  public void movePlayer(Square[][] board) throws IllegalArgumentException {
     int input;
     int i = getMoveCount();
 
     while (i > 0) {
-
-      currentRow = board.getPlayerPosition("row");
-      currentCol = board.getPlayerPosition("col");
 
       System.out.println("----------------------------------------------------------");
       // Prompt player for move selection
@@ -34,24 +32,25 @@ public class PlayerSprite {
       //System.out.println("To exit the game press 9");
 
       input = ReadPlayerInput.getInput();
+      board[currentPlayerRow][currentPlayerCol].setPlayerHere(false);
       // player choice is '1' --> UP
-      if (input == 1 && currentRow != 0) {
-        currentRow -= 1;
+      if (input == 1 && currentPlayerRow != 0) {
+        currentPlayerRow -= 1;
         ConsoleOutput.printMovedUp();
 
         // player choice is '2' --> RIGHT
-      } else if (input == 2 && currentCol != board.getBoardWidth() - 1) {
-        currentCol += 1;
+      } else if (input == 2 && currentPlayerCol != 5 - 1) {
+        currentPlayerCol += 1;
         ConsoleOutput.printMovedRight();
 
         // player choice is '3' --> DOWN
-      } else if (input == 3 && currentRow != board.getBoardHeight() - 1) {
-        currentRow += 1;
+      } else if (input == 3 && currentPlayerRow != 5 - 1) {
+        currentPlayerRow += 1;
         ConsoleOutput.printMovedDown();
 
         // player choice is '4' --> LEFT
-      } else if (input == 4 && currentCol != 0) {
-        currentCol -= 1;
+      } else if (input == 4 && currentPlayerCol != 0) {
+        currentPlayerCol -= 1;
         ConsoleOutput.printMovedLeft();
 
         //player choice is '0' --> EXIT the GAME
@@ -63,7 +62,9 @@ public class PlayerSprite {
       }
       i -= 1;
       setMoveCount(i);
-      board.updateBoard("player", currentRow, currentCol);
+//      board.updateBoard("player", currentPlayerRow, currentPlayerCol);
+      board[currentPlayerRow][currentPlayerCol].setPlayerHere(true);
+
 //      TODO: revise method call if necessary and uncomment it when method is written to resolve action phase for player turn
 //      resolvePlayerActions();
       ConsoleOutput.printMoveCount(getMoveCount());
@@ -86,6 +87,16 @@ public class PlayerSprite {
     //getters and setters
     public int getMoveCount() { return moveCount; }
     public void setMoveCount(int moveCount) { this.moveCount = moveCount; }
+
+
+    public void setCurrentPlayerRow(int row) {
+      currentPlayerRow = row;
+    }
+    public int getCurrentPlayerRow() { return this.currentPlayerRow; }
+    public void setCurrentPlayerCol(int col) {
+      currentPlayerCol = col;
+    }
+    public int getCurrentPlayerCol() { return this.currentPlayerCol; }
 
 
   @Override
