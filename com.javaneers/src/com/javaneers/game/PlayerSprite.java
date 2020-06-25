@@ -29,12 +29,7 @@ public class PlayerSprite {
 
       System.out.println("----------------------------------------------------------");
       // Prompt player for move selection
-      System.out.println("Please choose the direction you'd like to attempt to move: ");
-      System.out.println("    1. Move Up");
-      System.out.println("    2. Move Right");
-      System.out.println("    3. Move Down");
-      System.out.println("    4. Move Left \n");
-      System.out.println("    0. Exit the Game \n\n");
+      ConsoleOutput.printMoveSelectionsPrompt();
 
       //System.out.println("To exit the game press 9");
 
@@ -42,38 +37,49 @@ public class PlayerSprite {
       // player choice is '1' --> UP
       if (input == 1 && currentRow != 0) {
         currentRow -= 1;
-        System.out.println("You took one step up.");
+        ConsoleOutput.printMovedUp();
 
         // player choice is '2' --> RIGHT
       } else if (input == 2 && currentCol != board.getBoardWidth() - 1) {
         currentCol += 1;
-        System.out.println("You took one step right.");
+        ConsoleOutput.printMovedRight();
 
         // player choice is '3' --> DOWN
       } else if (input == 3 && currentRow != board.getBoardHeight() - 1) {
         currentRow += 1;
-        System.out.println("You took one step down.");
+        ConsoleOutput.printMovedDown();
 
         // player choice is '4' --> LEFT
       } else if (input == 4 && currentCol != 0) {
         currentCol -= 1;
-        System.out.println("You took one step left.");
+        ConsoleOutput.printMovedLeft();
 
         //player choice is '0' --> EXIT the GAME
       } else if (input == 0) {
         i = 1;
       }
       else {
-        System.out.println("Oops!  You slam headfirst into the wall. Guess you can't go that way...");
+        ConsoleOutput.printCannotMove(getMoveCount());
       }
       i -= 1;
       setMoveCount(i);
       board.updateBoard("player", currentRow, currentCol);
-      System.out.println("Moves left: " + getMoveCount()); //might be not needed inside movePlayer()
+//      TODO: revise method call if necessary and uncomment it when method is written to resolve action phase for player turn
+//      resolvePlayerActions();
+      ConsoleOutput.printMoveCount(getMoveCount());
      }
     }
-    //check currentPosition if the Player reached the Door or a Boon
 
+
+//    TODO: Finish writing this method to resolve action phase of player's turn
+//    private void resolvePlayerActions() {
+//    //Check if there is a door or boon at player's position
+//
+//    //If position contains door, attempt to open it
+//
+//    //If position contains boon, print a message and setMoveCount(5);
+//
+//    }
 
 
 
