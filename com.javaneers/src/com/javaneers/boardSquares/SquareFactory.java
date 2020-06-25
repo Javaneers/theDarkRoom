@@ -1,6 +1,5 @@
 package com.javaneers.boardSquares;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class SquareFactory {
@@ -10,9 +9,7 @@ public class SquareFactory {
   }
 
   public static int playerSpawn(Square[][] board) {
-//    return (board.length-1) - (int)Math.round((Math.random()))*(board.length-1);
     Random randInt = new Random();
-//    return (int) Math.floor((Math.random() * (board.length - 1 + 1) + 1));
     return randInt.nextInt(board.length-2) + 1;
   }
 
